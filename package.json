@@ -1,0 +1,27 @@
+{
+  "name": "shoes_api",
+  "version": "1.0.0",
+  "description": "SHOES CATALOGUE API",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GarethW1994/shoes_api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GarethW1994/shoes_api/issues"
+  },
+  "homepage": "https://github.com/GarethW1994/shoes_api#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "express-flash": "0.0.2",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.4",
+    "mongoose": "^4.11.4"
+  }
+}
