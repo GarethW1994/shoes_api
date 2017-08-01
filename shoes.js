@@ -83,15 +83,34 @@ module.exports = function() {
 
     //Update the stock levels when a shoe is sold
     var soldUpdate = function(req, res) {
-        res.send('Shoe Catalogue API - Update Sold Shoe');
+        let id = Number(req.params.id);
+        let newStock = Number(req.params.inStock);
+
+        shoes.find(function(shoes) {
+          if (shoes.id === id) {
+            shoes.in_stock = newStock;
+          }
+        });
+
+        res.send(shoes);
     }
 
     //Add a new shoe route
     var addShoe = function(req, res) {
         //add a new shoe
+        let newShoe = {
+          id: Number(req.params.id),
+          color: req.params.color,
+          brand: req.params.brand,
+          price: Number(req.params.price),
+          in_stock: Number(req.params.in_stock),
+          size: Number(req.params.size)
+        }
+
+        shoes.push(newShoe);
 
         //redirect to the home route
-        res.send('Shoe Catalogue API - Add Shoe Page');
+        res.send(shoes);
     }
 
     //return routes

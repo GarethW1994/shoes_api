@@ -24,10 +24,10 @@ app.get('/api/shoes/brand/:brandname/size/:size', Shoes().sizeBrand);
 ///////////////////POST ROUTES///////////////////////
 
 //Update the stock levels when a shoe is sold
-app.post('/api/shoes/sold/:id', Shoes().soldUpdate);
+app.get('/api/shoes/sold/:id/:inStock', Shoes().soldUpdate);
 
 //Add a new shoe route
-app.post('/api/shoes', Shoes().addShoe);
+app.get('/api/shoes/:id/:color/:brand/:price/:in_stock/:size', Shoes().addShoe);
 
 
 //create port
