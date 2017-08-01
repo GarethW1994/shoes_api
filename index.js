@@ -4,11 +4,16 @@ const express = require('express');
 //create express app
 var app = express();
 
+//require shoes.js function
+var Shoes = require('./shoes.js');
 
 //create root route
-app.get('/', function(req, res) {
-  res.send('Shoe Catalogue API');
-});
+app.get('/', Shoes().index);
+
+
+//create add shoe route
+app.get('/addShoe', Shoes().addShoe);
+
 
 //create port
 var port = 3107;
