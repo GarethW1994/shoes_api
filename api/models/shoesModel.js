@@ -1,28 +1,50 @@
 'use strict';
 
 const mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoConnect = require('../db/mongoConnect');
 
-var shoesSchema = new Schema({
-    id: {
+module.exports = function (url) {
+  //connect to database
+  mongoConnect(url);
+
+  //initialise schema
+  var Schema = mongoose.Schema;
+
+	const shoesData = function () {
+    //create schema
+    const shoesSchema = new Schema({
+      id: {
         type: Number,
         Required: true
-    },
-    color: {
+      },
+      color: {
         type: String
-    },
-    brand: {
+      },
+      brand: {
         type: String
-    }
-    price: {
+      },
+      price: {
         type: Number
-    },
-    in_stock: {
+      },
+      in_stock: {
         type: Number
-    },
-    size: {
+      },
+      size: {
         type: Number
-    }
-});
+      }
+    });
 
-module.exports = mongoose.model('shoes', shoesSchema);
+		//declare the unique values
+    //make id property unique to avoid duplication
+    shoesSchema.index({id: 1}, {unique: true});
+
+    //export mongoose model
+    var shoes = mongoose.model('shoes', shoesSchema);
+
+		return shoes;
+	}
+
+	return {
+		shoesData,
+	};
+}

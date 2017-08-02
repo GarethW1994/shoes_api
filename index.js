@@ -3,8 +3,15 @@ const express = require('express');
 //create express app
 var app = express();
 
+//define mongo url
+var mongoURL = process.env.MONGO_DB_URL || "mongodb://localhost/shoesAPI";
+
+//call mongo function
+var Model = require('./api/models/shoesModel');
+Model(mongoURL);
+
 //require shoes.js function
-var Shoes = require('./api/routes/shoesRoutes.js');
+var Shoes = require('./api/routes/shoesRoutes');
 
 ///////////////////GET ROUTES///////////////////////
 
@@ -31,7 +38,7 @@ app.get('/api/shoes/:id/:color/:brand/:price/:in_stock/:size', Shoes().addShoe);
 
 
 //create port
-var port = 3107;
+var port = process.env.PORT || 3107;
 
 //port listen function
 app.listen(port, function() {
