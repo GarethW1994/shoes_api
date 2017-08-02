@@ -40,6 +40,5 @@ describe('store shoes', function() {
                   done(err);
                 });
             });
-        //  assert.equal(1,2);
     });
 });
