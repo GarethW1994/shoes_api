@@ -48,7 +48,7 @@ module.exports = function() {
 
         res.send(brandsFilter);
     };
-
+    
     //list all shoes for a given size route
     var sizes = function(req, res) {
         let size = Number(req.params.size);

@@ -4,7 +4,7 @@ const express = require('express');
 var app = express();
 
 //require shoes.js function
-var Shoes = require('./shoes.js');
+var Shoes = require('./api/routes/shoesRoutes.js');
 
 ///////////////////GET ROUTES///////////////////////
 
