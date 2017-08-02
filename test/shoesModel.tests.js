@@ -19,10 +19,6 @@ describe('store shoes', function() {
 
 
     it('should add new shoes to MongoDB', function(done) {
-
-
-        //console.log(models.shoes);
-
         var newShoe = {
             id: 200,
             color: 'red',
