@@ -31,7 +31,6 @@ describe('store shoes', function() {
         shoes
             .create(newShoe, function(err) {
                 shoes.find({}, function(err, shoesCatalogue){
-                  console.log(shoesCatalogue.length);
                   assert.equal(1, shoesCatalogue.length);
                   done(err);
                 });

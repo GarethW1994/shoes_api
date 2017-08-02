@@ -1,17 +1,20 @@
 //require modules
 const express = require('express');
-//create express app
-var app = express();
-
 //define mongo url
 var mongoURL = process.env.MONGO_DB_URL || "mongodb://localhost/shoesAPI";
 
-//call mongo function
+//require model and routes
 var Model = require('./api/models/shoesModel');
-Model(mongoURL);
-
-//require shoes.js function
 var Shoes = require('./api/routes/shoesRoutes');
+
+//pass in the mongo url to model
+var models = Model(mongoURL);
+//pass in the model to routes function
+var modelRoutes = Shoes(models);
+
+//create express app
+var app = express();
+
 
 ///////////////////GET ROUTES///////////////////////
 
@@ -31,10 +34,10 @@ app.get('/api/shoes/brand/:brandname/size/:size', Shoes().sizeBrand);
 ///////////////////POST ROUTES///////////////////////
 
 //Update the stock levels when a shoe is sold
-app.get('/api/shoes/sold/:id/:inStock', Shoes().soldUpdate);
+app.post('/api/shoes/sold/:id', Shoes().soldUpdate);
 
 //Add a new shoe route
-app.get('/api/shoes/:id/:color/:brand/:price/:in_stock/:size', Shoes().addShoe);
+app.post('/api/shoes', Shoes().addShoe);
 
 
 //create port
