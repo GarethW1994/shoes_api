@@ -11,30 +11,36 @@ module.exports = function(Models) {
               if (err) {
                 return next(err);
               }
-
               res.send(shoes);
           });
     };
 
     //list all the shoes for a given brand route
     var brands = function(req, res, next) {
-        res.send('brandsFilter');
+      let shoe = {
+          brand: req.params.brandname
+        }
+
+        Models.Shoes.find(shoe, function(err, results){
+          if (err) {
+            return next(err);
+          }
+          res.send(results);
+        });
     };
 
     //list all shoes for a given size route
     var sizes = function(req, res) {
-        //let size = Number(req.params.size);
+        let shoe = {
+          size: req.params.size
+        }
 
-        let sizesFilter = [];
-
-        //find the shoe by size
-        // shoes.find(function(shoes) {
-        //     if (shoes.size === size) {
-        //         sizesFilter.push(shoes);
-        //     }
-        // });
-
-        res.send(sizesFilter);
+        Models.Shoes.find(shoe, function(err, results){
+          if (err) {
+            return next(err);
+          }
+          res.send(results);
+        });
     }
 
     //list all shoes for a given brand and size route
