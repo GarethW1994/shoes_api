@@ -15,7 +15,7 @@ module.exports = function(shoes, db) {
         //     res.send(shoesData);
         //     console.log(shoesData);
         // });
-        log(shoes());
+        log(shoes);
         res.send('shoe catalogue');
 
       //  db.close();

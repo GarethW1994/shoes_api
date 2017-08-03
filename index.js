@@ -1,6 +1,6 @@
 const chalk = require('chalk');
-const success = chalk.gray;
-const portMsg = chalk.green;
+const success = chalk.black.bgWhite;
+const portMsg = chalk.red.bgWhite;
 const log = console.log;
 //require modules
 const express = require('express');

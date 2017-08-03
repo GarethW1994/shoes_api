@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const chalk = require('chalk');
 const log = console.log;
 const error = chalk.bold.red;
-const success = chalk.yellow;
+const success = chalk.blueBright.bgWhite;
 
 module.exports = function(mongoURL) {
     //connect to MongoDB
