@@ -2,10 +2,7 @@ const mongoose = require('mongoose');
 
 module.exports = function(mongoURL) {
     //connect to MongoDB
-    mongoose.connect(mongoURL);
-
-
-    var db = mongoose.connection;
+    var db  = mongoose.createConnection(mongoURL);
 
     var currentState = db.open().ended;
 

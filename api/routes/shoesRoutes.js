@@ -1,20 +1,19 @@
 module.exports = function(model) {
 
-  var shoes = model;
+ var shoes = model;
 
-
-  console.log(shoes.shoesData());
+ console.log(shoes);
 
     //show all the shoes route
     const index = function(req, res, next) {
-      res.send(shoes.shoesData());
-        // shoes.find({}, function(err, shoesData) {
-        //     if (err) {
-        //         return next(err);
-        //     }
-        //     //display all the shoes
-        //     res.send(shoesData);
-        // });
+        shoes.find({}, function(err, shoesData) {
+            if (err) {
+                return (err);
+            }
+            //display all the shoes
+            res.send(shoesData);
+            console.log(shoesData);
+        });
     };
 
     //list all the shoes for a given brand route

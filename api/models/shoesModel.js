@@ -7,6 +7,8 @@ module.exports = function (url) {
   //connect to database
   mongoConnect(url);
 
+  mongoose.Promise = global.Promise;
+
   //initialise schema
   var Schema = mongoose.Schema;
 

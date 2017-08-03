@@ -8,7 +8,8 @@ var Model = require('./api/models/shoesModel');
 var Shoes = require('./api/routes/shoesRoutes');
 
 //pass in the mongo url to model
-var models = Model(mongoURL);
+var models = new Model(mongoURL);
+
 //pass in the model to routes function
 var modelRoutes = Shoes(models);
 
