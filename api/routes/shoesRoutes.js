@@ -64,14 +64,11 @@ module.exports = function(Models) {
           id: Number(req.params.id)
         }
 
-        let newStock = Number(req.params.inStock);
+        let new_stock = Number(req.params.inStock);
 
-        Models.Shoes.find(shoe, function(err, results){
-          if (err) {
-            return next(err);
-          }
-          res.send("update");
-        });
+        Models.Shoes.update(shoe, {in_stock: new_stock});
+
+        res.redirect('/api/shoes');
     }
 
     //Add a new shoe route
