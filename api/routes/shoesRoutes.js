@@ -3,39 +3,22 @@ const error = chalk.bold.red;
 const success = chalk.bold.yellow;
 const log = console.log;
 
-module.exports = function(shoes, db) {
+module.exports = function(Models) {
 
     //show all the shoes route
     const index = function(req, res, next) {
-        // shoes.find({}, function(err, shoesData) {
-        //     if (err) {
-        //         return (err);
-        //     }
-        //     //display all the shoes
-        //     res.send(shoesData);
-        //     console.log(shoesData);
-        // });
-        log(shoes);
-        res.send('shoe catalogue');
+          Models.Shoes.find({}, function(err, shoes) {
+              if (err) {
+                return next(err);
+              }
 
-      //  db.close();
+              res.send(shoes);
+          });
     };
 
     //list all the shoes for a given brand route
-    var brands = function(req, res) {
-        //search for shoes by brand
-      //  let brand = req.params.brandname;
-
-        let brandsFilter = [];
-
-        //find the shoe by brand
-        // shoes.find(function(shoes) {
-        //     if (shoes.brand === brand) {
-        //         brandsFilter.push(shoes);
-        //     }
-        //});
-
-        res.send(brandsFilter);
+    var brands = function(req, res, next) {
+        res.send('brandsFilter');
     };
 
     //list all shoes for a given size route

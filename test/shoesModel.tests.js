@@ -8,7 +8,7 @@ describe('store shoes', function() {
 
     var shoes = Model().shoesData();
 
-    //before it fuction run clear the Database
+   //before it fuction run clear the Database
     beforeEach(function(done) {
         shoes.find({}, function(err) {
             shoes.remove({}, function(err) {
@@ -16,7 +16,6 @@ describe('store shoes', function() {
             });
         });
     });
-
 
     it('should add new shoes to MongoDB', function(done) {
         var newShoe = {

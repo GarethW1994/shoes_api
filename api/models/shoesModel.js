@@ -1,47 +1,38 @@
 'use strict';
 const mongoose = require('mongoose');
 
-module.exports = function (url) {
-  mongoose.Promise = global.Promise;
+module.exports = function(url) {
+  //connect to MongoDB
+    mongoose.connect(url);
 
-  //initialise schema
-  var Schema = mongoose.Schema;
+    mongoose.Promise = global.Promise;
 
-	const shoesData = function () {
-    //create schema
-    const shoesSchema = new Schema({
-      id: {
-        type: Number,
-        Required: true
-      },
-      color: {
-        type: String
-      },
-      brand: {
-        type: String
-      },
-      price: {
-        type: Number
-      },
-      in_stock: {
-        type: Number
-      },
-      size: {
-        type: Number
-      }
+    //initialise schema
+    const ShoesSchema = mongoose.Schema({
+        id: {
+            type: Number,
+            Required: true
+        },
+        color: {
+            type: String
+        },
+        brand: {
+            type: String
+        },
+        price: {
+            type: Number
+        },
+        in_stock: {
+            type: Number
+        },
+        size: {
+            type: Number
+        }
     });
 
-		//declare the unique values
-    //make id property unique to avoid duplication
-    shoesSchema.index({id: 1}, {unique: true});
+    const Shoes = mongoose.model('Shoes', ShoesSchema);
 
-    //export mongoose model
-    var shoes = mongoose.model('shoes', shoesSchema);
-
-    return shoes;
-	}
-
-	return {
-		shoesData
-	};
+    return {
+        Shoes
+    }
 }
