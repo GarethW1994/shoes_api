@@ -1,12 +1,7 @@
 'use strict';
-
 const mongoose = require('mongoose');
-const mongoConnect = require('../db/mongoConnect');
 
 module.exports = function (url) {
-  //connect to database
-  mongoConnect(url);
-
   mongoose.Promise = global.Promise;
 
   //initialise schema

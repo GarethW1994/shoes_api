@@ -1,4 +1,9 @@
-module.exports = function(shoes) {
+const chalk = require('chalk');
+const error = chalk.bold.red;
+const success = chalk.bold.yellow;
+const log = console.log;
+
+module.exports = function(shoes, db) {
 
     //show all the shoes route
     const index = function(req, res, next) {
@@ -10,8 +15,10 @@ module.exports = function(shoes) {
         //     res.send(shoesData);
         //     console.log(shoesData);
         // });
-        console.log(shoes);
+        log(shoes());
         res.send('shoe catalogue');
+
+      //  db.close();
     };
 
     //list all the shoes for a given brand route

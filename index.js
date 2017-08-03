@@ -1,11 +1,21 @@
+const chalk = require('chalk');
+const success = chalk.gray;
+const portMsg = chalk.green;
+const log = console.log;
 //require modules
 const express = require('express');
 //define mongo url
-var mongoURL = process.env.MONGO_DB_URL || "mongodb://localhost/shoesAPI";
+const mongoURL = process.env.MONGO_DB_URL || "mongodb://localhost/shoesAPI";
 
 //require model and routes
-var Model = require('./api/models/shoesModel');
-var Shoes = require('./api/routes/shoesRoutes');
+const mongoConnect = require('./api/db/mongoConnect');
+
+//connect to database
+var db = mongoConnect(mongoURL);
+
+const Model = require('./api/models/shoesModel');
+const Shoes = require('./api/routes/shoesRoutes');
+
 
 //pass in the mongo url to model
 var Models = Model(mongoURL);
@@ -13,7 +23,7 @@ var Models = Model(mongoURL);
 var Models = Models.shoesData();
 
 //pass in the model to routes function
-var shoesRoutes = Shoes(Models);
+var shoesRoutes = Shoes(Models, db);
 
 //create express app
 var app = express();
@@ -48,5 +58,5 @@ var port = process.env.PORT || 3107;
 
 //port listen function
 app.listen(port, function() {
-  console.log('Web App running on port: ' + port);
+    log(success('Web App running on port: ' + portMsg(port)));
 });

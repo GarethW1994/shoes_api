@@ -18,6 +18,7 @@
   "homepage": "https://github.com/GarethW1994/shoes_api#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "chalk": "^2.0.1",
     "cookie-parser": "^1.4.3",
     "express-flash": "0.0.2",
     "express-handlebars": "^3.0.0",
