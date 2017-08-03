@@ -45,50 +45,54 @@ module.exports = function(Models) {
 
     //list all shoes for a given brand and size route
     var sizeBrand = function(req, res) {
-        //let brandname = req.params.brandname;
-        //let size = Number(req.params.size);
+        let shoe = {
+          brand: req.params.brandname,
+          size: req.params.size
+        }
 
-        let brandSizeFilter = [];
-
-        // shoes.find(function(shoes) {
-        //     if (shoes.brand === brandname && shoes.size === size) {
-        //         brandSizeFilter.push(shoes);
-        //     }
-        // });
-
-        res.send(brandSizeFilter);
+        Models.Shoes.find(shoe, function(err, results){
+          if (err) {
+            return next(err);
+          }
+          res.send(results);
+        })
     }
 
     //Update the stock levels when a shoe is sold
     var soldUpdate = function(req, res) {
-        //let id = Number(req.params.id);
-        //let newStock = Number(req.params.inStock);
+        let shoe = {
+          id: Number(req.params.id)
+        }
 
-        // shoes.find(function(shoes) {
-        //     if (shoes.id === id) {
-        //         shoes.in_stock = newStock;
-        //     }
-        // });
+        let newStock = Number(req.params.inStock);
 
-        res.send("update");
+        Models.Shoes.find(shoe, function(err, results){
+          if (err) {
+            return next(err);
+          }
+          res.send("update");
+        });
     }
 
     //Add a new shoe route
-    var addShoe = function(req, res) {
-        //add a new shoe
-        // let newShoe = {
-        //     id: Number(req.params.id),
-        //     color: req.params.color,
-        //     brand: req.params.brand,
-        //     price: Number(req.params.price),
-        //     in_stock: Number(req.params.in_stock),
-        //     size: Number(req.params.size)
-        // }
+    var addShoe = function(req, res, next) {
+        // add a new shoe
+        let newShoe = {
+            id: Number(req.params.id),
+            color: req.params.color,
+            brand: req.params.brand,
+            price: Number(req.params.price),
+            in_stock: Number(req.params.in_stock),
+            size: Number(req.params.size)
+        }
 
-      //  shoes.push(newShoe);
-
-        //redirect to the home route
-        //res.send(shoes);
+        Models.Shoes
+          .create(newShoe, function(err, results){
+            if (err) {
+              return next(err);
+            }
+            res.redirect('/api/shoes');
+          });
     }
 
     //return routes
