@@ -8,10 +8,12 @@ var Model = require('./api/models/shoesModel');
 var Shoes = require('./api/routes/shoesRoutes');
 
 //pass in the mongo url to model
-var models = new Model(mongoURL);
+var Models = Model(mongoURL);
+
+var Models = Models.shoesData();
 
 //pass in the model to routes function
-var modelRoutes = Shoes(models);
+var shoesRoutes = Shoes(Models);
 
 //create express app
 var app = express();

@@ -43,7 +43,7 @@ module.exports = function (url) {
     //export mongoose model
     var shoes = mongoose.model('shoes', shoesSchema);
 
-		return shoes;
+    return shoes;
 	}
 
 	return {
