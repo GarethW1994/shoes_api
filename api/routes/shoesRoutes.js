@@ -28,9 +28,9 @@ module.exports = function(Models) {
     //list all the shoes for a given brand route
     var brands = function(req, res, next) {
       //save the
-        let query = {brand: req.params.brand};
+        let query = {brand: req.params.brandname};
       //find the shoe in the database
-        Models.Shoes.find(shoe, function(err, results){
+        Models.Shoes.find(query, function(err, results){
           if (err) {
             res.json({
               response: 'Status Failure',

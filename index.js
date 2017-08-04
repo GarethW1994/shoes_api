@@ -2,6 +2,7 @@
 const express = require('express');
 const chalk = require('chalk');
 const jsonParser = require('body-parser').json;
+const logger = require('morgan');
 
 //console styling
 const success = chalk.black.bgWhite;
@@ -34,6 +35,7 @@ app.get('/', function(req, res){
 app.use(express.static('public'));
 //use jsonParser
 app.use(jsonParser());
+app.use(logger("dev"));
 
 //show all the shoes route
 app.get('/api/shoes', shoesRoutes.index);
