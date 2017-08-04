@@ -38,7 +38,7 @@ app.get('/api/shoes/brand/:brandname/size/:size', shoesRoutes.sizeBrand);
 ///////////////////POST ROUTES///////////////////////
 
 //Update the stock levels when a shoe is sold
-app.get('/api/shoes/sold/:id/:inStock', shoesRoutes.soldUpdate);
+app.post('/api/shoes/sold/:id', shoesRoutes.soldUpdate);
 
 //Add a new shoe route
 app.post('/api/shoes', shoesRoutes.addShoe);
