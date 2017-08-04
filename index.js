@@ -56,6 +56,29 @@ app.post('/api/shoes/sold/:id', shoesRoutes.soldUpdate);
 //Add a new shoe route
 app.post('/api/shoes', shoesRoutes.addShoe);
 
+
+//Not Found Error Handling
+app.use(function(req, res, next){
+    var err = new Error('Not Found');
+    err.status = 404;
+    res.json({
+        message: 'Not Found',
+        error: err
+    });
+    next(err);
+});
+
+//Error Handling
+app.use(function(err, req, res, next){
+    res.status(err.status || 500);
+
+    res.json({
+        error: {
+          message: error.message
+        }
+    });
+});
+
 //create port
 var port = process.env.PORT || 3107;
 
