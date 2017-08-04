@@ -48,7 +48,7 @@ module.exports = function(Models) {
     };
 
     //list all shoes for a given size route
-    var sizes = function(req, res) {
+    var sizes = function(req, res, next) {
         //save the brand size in object
         let query = {size: req.params.size};
         //find the shoe in the database
@@ -71,7 +71,7 @@ module.exports = function(Models) {
     }
 
     //list all shoes for a given brand and size route
-    var sizeBrand = function(req, res) {
+    var sizeBrand = function(req, res, next) {
           //save the brand name and shoe size in object
           let query = {brand: req.params.brandname, size: req.params.size};
           //find the shoe in the database
@@ -95,44 +95,65 @@ module.exports = function(Models) {
     }
 
     //Update the stock levels when a shoe is sold
-    var soldUpdate = function(req, res) {
+    var soldUpdate = function(req, res, next) {
         if (!req.body) {
           log("No body property found!");
         } else {
           //save ID
-          let id = req.params.id;
+          let query = {id: req.params.id, in_stock: req.body.in_stock};
 
-          res.json({
-            reponse: "Update POST made",
-            shoeID: req.params.id,
-            body: req.body
+          //update the current shoe in the database
+          Models.Shoes.update({id: query.id}, {in_stock: query.in_stock}, function(err, results){
+            if (err) {
+              res.json({
+                response: "Status Failure",
+                error: err,
+                status: 503
+              });
+              return next(err);
+            }
+            res.json({
+                response: "Shoe Updated",
+                id: query.id,
+                body: req.body,
+                updated: results
+            });
           });
         }
-        //Models.Shoes.update(shoe, {in_stock: new_stock});
-        //res.redirect('/api/shoes');
     }
 
     //Add a new shoe route
     var addShoe = function(req, res, next) {
         // check if the body property exits.
-        if (req.body) {
-          log("Successfully found new shoe" + req.body);
-        } else {
+        if (!req.body.id) {
           log("There is no body property on the request");
-        }
+          res.json({
+            response: "No body property found",
+            status: 503
+          });
+        } else {
+          //new shoe
+          let shoe = req.body;
 
-        res.json({
-              response: 'Added New Shoes',
-              body: req.body
-        });
-        //
-        // Models.Shoes
-        //   .create(newShoe, function(err, results){
-        //     if (err) {
-        //       return next(err);
-        //     }
-        //     res.redirect('/api/shoes');
-        //   });
+          //save shoe to the database
+          Models.Shoes
+              .create(shoe, function(err, results) {
+                if (err){
+                  res.json({
+                      response: "Status Failure",
+                      error: err,
+                      status: 503
+                  });
+                  return next(err);
+                }
+                //send updated value to the
+                res.json({
+                  response: "Added Shoe Successfully",
+                  status: 200,
+                  data: results
+                })
+              });
+        }
     }
 
     //return routes
