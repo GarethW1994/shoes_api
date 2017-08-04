@@ -4,12 +4,12 @@ const Model = require('../api/models/shoesModel');
 
 describe('store shoes', function() {
     //connect to MongoDB
-    var shoes = Model('mongodb://localhost/shoesAPI');
+    var Models = Model('mongodb://localhost/shoesAPI');
 
    //before it fuction run clear the Database
     beforeEach(function(done) {
-        shoes.find({}, function(err) {
-            shoes.remove({}, function(err) {
+        Models.Shoes.find({}, function(err) {
+            Models.Shoes.remove({}, function(err) {
                 done(err);
             });
         });
@@ -25,10 +25,10 @@ describe('store shoes', function() {
             size: 3
         }
 
-        shoes
+        Models.Shoes
             .create(newShoe, function(err) {
-                shoes.find({}, function(err, shoesCatalogue){
-                  assert.equal(1, shoesCatalogue.length);
+                Models.Shoes.find({}, function(err, shoes){
+                  assert.equal(1, shoes.length);
                   done(err);
                 });
             });
