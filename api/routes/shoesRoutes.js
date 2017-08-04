@@ -7,7 +7,7 @@ module.exports = function(Models) {
 
     //show all the shoes route
     const allShoes = function(req, res, next) {
-          Models.Shoes.find({}, function(err, results) {
+      Models.Shoes.find({}, function(err, results) {
               if (err) {
                 res.json({
                   response: 'Status Failure',
@@ -96,8 +96,15 @@ module.exports = function(Models) {
 
     //Update the stock levels when a shoe is sold
     const soldUpdate = function(req, res, next) {
-        if (!req.body) {
-          log("No body property found!");
+        if (req.params.id === undefined) {
+          var err = new Error('Not Found');
+          err.status = 404;
+
+          res.json({
+            error: {
+              message: 'Not Found'
+            }
+          })
         } else {
           //save ID and new stock in object
           let query = {id: req.params.id, in_stock: req.body.in_stock};
