@@ -75,11 +75,15 @@ module.exports = function(Models) {
     var addShoe = function(req, res, next) {
         // check if the body property exits.
         if (req.body) {
-          log("Successfully found new shoe id:" + req.body.id)
+          log("Successfully found new shoe" + req.body);
         } else {
           log("There is no body property on the request");
         }
-        
+
+        res.json({
+              response: 'Added New Shoes',
+              body: req.body
+        });
         //
         // Models.Shoes
         //   .create(newShoe, function(err, results){

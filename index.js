@@ -27,7 +27,7 @@ var app = express();
 ///////////////////GET ROUTES///////////////////////
 //root
 app.get('/', function(req, res){
-    res.send('Shoe Catalogue API');
+    res.json({heading: 'Shoe Catalogue'});
 });
 
 //Stacic Files
