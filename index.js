@@ -53,5 +53,5 @@ var port = process.env.PORT || 3107;
 
 //port listen function
 app.listen(port, function() {
-    log(success('Web App running on port: ' + portMsg(port)));
+    log('Web App running on port: ' + port);
 });
