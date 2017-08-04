@@ -4,9 +4,7 @@ const Model = require('../api/models/shoesModel');
 
 describe('store shoes', function() {
     //connect to MongoDB
-    Model('mongodb://localhost/shoesAPI');
-
-    var shoes = Model().shoesData();
+    var shoes = Model('mongodb://localhost/shoesAPI');
 
    //before it fuction run clear the Database
     beforeEach(function(done) {
