@@ -6,7 +6,7 @@ const log = console.log;
 module.exports = function(Models) {
 
     //show all the shoes route
-    const index = function(req, res, next) {
+    const allShoes = function(req, res, next) {
           Models.Shoes.find({}, function(err, results) {
               if (err) {
                 res.json({
@@ -26,7 +26,7 @@ module.exports = function(Models) {
     };
 
     //list all the shoes for a given brand route
-    var brands = function(req, res, next) {
+    const brands = function(req, res, next) {
       //save the
         let query = {brand: req.params.brandname};
       //find the shoe in the database
@@ -48,7 +48,7 @@ module.exports = function(Models) {
     };
 
     //list all shoes for a given size route
-    var sizes = function(req, res, next) {
+    const sizes = function(req, res, next) {
         //save the brand size in object
         let query = {size: req.params.size};
         //find the shoe in the database
@@ -71,7 +71,7 @@ module.exports = function(Models) {
     }
 
     //list all shoes for a given brand and size route
-    var sizeBrand = function(req, res, next) {
+    const sizeBrand = function(req, res, next) {
           //save the brand name and shoe size in object
           let query = {brand: req.params.brandname, size: req.params.size};
           //find the shoe in the database
@@ -95,11 +95,11 @@ module.exports = function(Models) {
     }
 
     //Update the stock levels when a shoe is sold
-    var soldUpdate = function(req, res, next) {
+    const soldUpdate = function(req, res, next) {
         if (!req.body) {
           log("No body property found!");
         } else {
-          //save ID
+          //save ID and new stock in object
           let query = {id: req.params.id, in_stock: req.body.in_stock};
 
           //update the current shoe in the database
@@ -123,7 +123,7 @@ module.exports = function(Models) {
     }
 
     //Add a new shoe route
-    var addShoe = function(req, res, next) {
+    const addShoe = function(req, res, next) {
         // check if the body property exits.
         if (!req.body.id) {
           log("There is no body property on the request");
@@ -158,7 +158,7 @@ module.exports = function(Models) {
 
     //return routes
     return {
-        index,
+        allShoes,
         brands,
         sizes,
         sizeBrand,

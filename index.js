@@ -31,14 +31,13 @@ app.get('/', function(req, res){
     res.json({heading: 'Shoe Catalogue'});
 });
 
-//Stacic Files
-app.use(express.static('public'));
 //use jsonParser
 app.use(jsonParser());
+//use morgon
 app.use(logger("dev"));
 
 //show all the shoes route
-app.get('/api/shoes', shoesRoutes.index);
+app.get('/api/shoes', shoesRoutes.allShoes);
 
 //list all the shoes for a given brand route
 app.get('/api/shoes/brand/:brandname', shoesRoutes.brands);
