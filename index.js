@@ -1,6 +1,7 @@
 //require modules
 const express = require('express');
 const chalk = require('chalk');
+const jsonParser = require('body-parser').json;
 
 //console styling
 const success = chalk.black.bgWhite;
@@ -28,6 +29,11 @@ var app = express();
 app.get('/', function(req, res){
     res.send('Shoe Catalogue API');
 });
+
+//Stacic Files
+app.use(express.static('public'));
+//use jsonParser
+app.use(jsonParser());
 
 //show all the shoes route
 app.get('/api/shoes', shoesRoutes.index);

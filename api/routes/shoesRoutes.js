@@ -73,23 +73,21 @@ module.exports = function(Models) {
 
     //Add a new shoe route
     var addShoe = function(req, res, next) {
-        // add a new shoe
-        let newShoe = {
-            id: Number(req.params.id),
-            color: req.params.color,
-            brand: req.params.brand,
-            price: Number(req.params.price),
-            in_stock: Number(req.params.in_stock),
-            size: Number(req.params.size)
+        // check if the body property exits.
+        if (req.body) {
+          log("Successfully found new shoe id:" + req.body.id)
+        } else {
+          log("There is no body property on the request");
         }
-
-        Models.Shoes
-          .create(newShoe, function(err, results){
-            if (err) {
-              return next(err);
-            }
-            res.redirect('/api/shoes');
-          });
+        
+        //
+        // Models.Shoes
+        //   .create(newShoe, function(err, results){
+        //     if (err) {
+        //       return next(err);
+        //     }
+        //     res.redirect('/api/shoes');
+        //   });
     }
 
     //return routes
