@@ -21,6 +21,10 @@ var shoesRoutes = ShoeRoutes(shoeModel);
 var app = express();
 
 ///////////////////GET ROUTES///////////////////////
+//root
+app.get('/', function(req, res){
+    res.send('Shoe Catalogue API');
+});
 
 //show all the shoes route
 app.get('/api/shoes', shoesRoutes.index);
