@@ -14,20 +14,25 @@ module.exports = function(url) {
             Required: true
         },
         color: {
-            type: String
+            type: String,
+            default: 'Black'
         },
         brand: {
-            type: String
+            type: String,
+            default: 'Abi'
         },
         price: {
-            type: Number
+            type: Number,
+            default: 0.00
         },
         in_stock: {
-            type: Number
+            type: Number,
+            default: 0
         },
         size: {
-            type: Number
-        }
+            type: Number,
+            default: 0
+           }
     });
 
     const Shoes = mongoose.model('Shoes', ShoesSchema);
