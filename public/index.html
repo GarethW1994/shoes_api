@@ -11,19 +11,31 @@
     <h1>Shoe Catalogue</h1>
 
     <form>
-      <input type="text" name="search" placeholder="search shoe..." id="textSearch">
-  </form>
+        <input type="text" name="search" placeholder="search shoe..." id="textSearch">
+    </form>
+
+    <div class="searchOptions">
+      <script src="main.js" id="menuList" type="type/x-handlebars" charset="utf-8">
+              Size: <select class="sizeMenu" name="size">
+              {{#each menuList}}
+                      <option value="">{{this.size}}</option>
+              {{/each}}
+              </select>
+
+              Brand: <select class="brandMenu" name="brand">
+                {{#each menuList}}
+                  <option value="">{{this.brand}}</option>
+                {{/each}}
+              </select>
+      </script>
+    </div>
+
 
     <ul id="shoeList">
         <script src="main.js" id="list" type="type/x-handlebars">
             {{#each shoes}}
             <li>
-            id: {{id}}
-            Brand: {{brand}}
-            Color: {{color}}
-            Size: {{size}}
-            Price: {{price}}
-            In Stock: {{in_stock}}
+                id: {{id}} Brand: {{brand}} Color: {{color}} Size: {{size}} Price: {{price}} In Stock: {{in_stock}}
             </li>
             {{/each}}
         </script>
@@ -33,6 +45,9 @@
     <script src="./javascript/lib/handlebars-v4.0.5.js" charset="utf-8"></script>
     <script src="./javascript/lib/jquery-1.12.0.min.js" charset="utf-8"></script>
     <!-- link to javascript -->
+    <script src="./javascript/search_brand.js" charset="utf-8"></script>
+    <script src="./javascript/populate_menus.js" charset="utf-8"></script>
     <script src="./javascript/main.js" charset="utf-8"></script>
 </body>
+
 </html>
