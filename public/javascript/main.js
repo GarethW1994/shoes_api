@@ -19,7 +19,6 @@ function showAll() {
       }).done(function(data) {
           log(data);
           let shoeData = data.data.shoes;
-          log(shoeData);
 
           //  log(list);
           list.innerHTML = shoeTemplate({

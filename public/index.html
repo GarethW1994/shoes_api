@@ -13,7 +13,7 @@
     <form>
         <input type="text" name="search" placeholder="search shoe..." id="textSearch">
     </form>
-
+    <br/>
     <div class="searchOptions">
       <script src="main.js" id="menuList" type="type/x-handlebars" charset="utf-8">
               Size: <select class="sizeMenu" name="size">
@@ -27,17 +27,23 @@
                   <option value="">{{this.brand}}</option>
                 {{/each}}
               </select>
+
+              <button name="searchButton">Search</button>
       </script>
     </div>
 
 
     <ul id="shoeList">
         <script src="main.js" id="list" type="type/x-handlebars">
+          {{#if shoes}}
             {{#each shoes}}
             <li>
                 id: {{id}} Brand: {{brand}} Color: {{color}} Size: {{size}} Price: {{price}} In Stock: {{in_stock}}
             </li>
             {{/each}}
+            {{else}}
+              <li>Nothing found :(</li>
+            {{/if}}
         </script>
     </ul>
 
