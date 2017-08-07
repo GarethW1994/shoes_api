@@ -4,7 +4,6 @@ const success = chalk.bold.yellow;
 const log = console.log;
 
 module.exports = function(Models) {
-
     //show all the shoes route
     const allShoes = function(req, res, next) {
       Models.Shoes.find({}, function(err, results) {
@@ -20,7 +19,7 @@ module.exports = function(Models) {
               res.json({
                 response: 'Got a GET request for all shoe data',
                 status: 200,
-                data: results
+                data: {shoes: results}
               })
           });
     };
