@@ -23,13 +23,29 @@ var shoeModel = ShoeModel(mongoURL);
 var shoesRoutes = ShoeRoutes(shoeModel);
 
 //create express app
-var app = express();
+const app = express();
+
+//RESPONSE HEADERS
+//Grant access to the resources to web browers
+//specify what they can and can't do
+app.use(function(req, res, next){
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Header", "Origin, X-Requested-With, Content-Type, Accept");
+
+  if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", "PUT,POST,DELETE");
+    return res.status(200).json({});
+  }
+  next();
+});
+
 
 ///////////////////GET ROUTES///////////////////////
 //root
 app.get('/', function(req, res){
     res.json({heading: 'Shoe Catalogue'});
 });
+
 
 //use jsonParser
 app.use(jsonParser());
