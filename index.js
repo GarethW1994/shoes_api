@@ -56,7 +56,6 @@ app.post('/api/shoes/sold/:id', shoesRoutes.soldUpdate);
 //Add a new shoe route
 app.post('/api/shoes', shoesRoutes.addShoe);
 
-
 //Not Found Error Handling
 app.use(function(req, res, next){
     var err = new Error('Not Found');

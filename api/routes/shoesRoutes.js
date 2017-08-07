@@ -27,6 +27,7 @@ module.exports = function(Models) {
 
     //list all the shoes for a given brand route
     const brands = function(req, res, next) {
+      log('Hello');
       //save the
         let query = {brand: req.params.brandname};
       //find the shoe in the database
@@ -158,7 +159,7 @@ module.exports = function(Models) {
                   response: "Added Shoe Successfully",
                   status: 200,
                   data: results
-                })
+                });
               });
         }
     }
