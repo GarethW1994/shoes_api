@@ -1,6 +1,10 @@
 const log = console.log;
 //DOCUMENT READY
 $(document).ready(function(){
+    //initailising handlebars-v4
+    var listSource = document.getElementById('list').innerHTML;
+    var shoeTemplate = Handlebars.compile(listSource);
+
     //AJAX Call
     //Retrieving all the data
     $.ajax({
@@ -12,7 +16,8 @@ $(document).ready(function(){
       log(shoeData);
 
       //display all the shoe information to the client
-      // document.getElementById('#')
-      $('#shoeList').innerHTML = '<li>' + 'test' + '</li>';
+        let list = document.getElementById('shoeList');
+      //  log(list);
+       list.innerHTML = shoeTemplate({shoes: shoeData});
     });
 });

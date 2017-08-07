@@ -1,19 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Shoe Catalogue</title>
-  </head>
-  <body>
-      <h1>Shoe Catalogue</h1>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
 
-    
-          <ul id="shoeList"></ul>
+<body>
+    <h1>Shoe Catalogue</h1>
 
-      <!-- link to libraries -->
-      <script src="./javascript/lib/handlebars-v4.0.5.js" charset="utf-8"></script>
-      <script src="./javascript/lib/jquery-1.12.0.min.js" charset="utf-8"></script>
-      <!-- link to javascript -->
-      <script src="./javascript/main.js" charset="utf-8"></script>
-  </body>
+    <form>
+      <input type="text" name="search" placeholder="search shoe..." id="textSearch">
+  </form>
+
+    <ul id="shoeList">
+        <script src="main.js" id="list" type="type/x-handlebars">
+            {{#each shoes}}
+            <li>
+            id: {{id}}
+            Brand: {{brand}}
+            Color: {{color}}
+            Size: {{size}}
+            Price: {{price}}
+            In Stock: {{in_stock}}
+            </li>
+            {{/each}}
+        </script>
+    </ul>
+
+    <!-- link to libraries -->
+    <script src="./javascript/lib/handlebars-v4.0.5.js" charset="utf-8"></script>
+    <script src="./javascript/lib/jquery-1.12.0.min.js" charset="utf-8"></script>
+    <!-- link to javascript -->
+    <script src="./javascript/main.js" charset="utf-8"></script>
+</body>
 </html>
