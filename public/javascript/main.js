@@ -42,8 +42,10 @@ function showAll() {
   });
 
   $('.searchOptions').on('click', function(e) {
-      $('')
-      log(e.target);
+      let brand = this.children.brand.value;
+      let size = this.children.size.value;
+
+      search_brand_size(url, brand, size);
   });
 
   //call show all function
