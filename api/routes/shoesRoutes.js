@@ -17,7 +17,7 @@ module.exports = function(Models) {
             }
             //send all data to the client
               res.json({
-                response: 'Example test',
+                response: 'GET request for All Shoes',
                 status: 200,
                 data: {shoes: results}
               })
