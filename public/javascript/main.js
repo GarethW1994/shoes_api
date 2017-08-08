@@ -12,6 +12,7 @@ $(document).ready(function(){
     var shoeTemplate = Handlebars.compile(listSource);
 
     var newShoeData = [];
+    var counter = 0;
 
 function showAll(prop) {
       let property = prop.prop;
@@ -35,9 +36,10 @@ function showAll(prop) {
         if (property !== "") {
           populate_menus(shoeData);
         }
-      });
-}
 
+        populate_form(shoeData);
+      });
+};
 
   $('#textSearch').on('change', function(e){
       let string = e.target.value.toLowerCase();
@@ -66,6 +68,35 @@ function showAll(prop) {
       };
   });
 
+  //Update stock
+  var formSource = document.querySelector("#form").innerHTML;
+  var formTemplate = Handlebars.compile(formSource);
+  var formHolder = document.querySelector('.updateForm');
+
+
+  function populate_form(data, counter) {
+    log('populating form...');
+    log(counter);
+    if (counter == undefined) {
+      formHolder.innerHTML = formTemplate({
+        id: data[0].id,
+        brand: data[0].brand,
+        color: data[0].color,
+        size: data[0].size,
+        price: data[0].price,
+        in_stock: data[0].in_stock
+      });
+    }
+  }
+
+  var next = document.querySelector('.next');
   //call show all function
   showAll({prop: 'show all'});
+
+  $('.next').on('click', function(){
+    log('you clicked next');
+    // counter =+ 1;
+    // log(counter);
+    // populate_form(counter);
+  });
 });
