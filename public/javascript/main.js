@@ -42,7 +42,8 @@ function showAll() {
   });
 
   $('.searchOptions').on('click', function(e) {
-    log(e.target.value);
+      $('')
+      log(e.target);
   });
 
   //call show all function

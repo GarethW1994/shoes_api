@@ -19,13 +19,13 @@
       <script src="main.js" id="menuList" type="type/x-handlebars" charset="utf-8">
               Size: <select class="sizeMenu" name="size">
               {{#each menuList}}
-                      <option value="">{{this.size}}</option>
+                      <option value="{{this.size}}">{{this.size}}</option>
               {{/each}}
               </select>
 
               Brand: <select class="brandMenu" name="brand">
                 {{#each menuList}}
-                  <option value="">{{this.brand}}</option>
+                  <option value="{{this.brand}}">{{this.brand}}</option>
                 {{/each}}
               </select>
 
