@@ -53,16 +53,16 @@ function showAll(prop) {
   $('.searchOptions').on('click', function(e) {
       let brand = this.children.brand.value;
       let size = this.children.size.value;
-
-      if (brand !== 'all') {
+      //search logic
+      if (brand !== 'all' && size == 'all') {
         search_brand(brand, url, list, shoeTemplate);
-      } else if (size !== 'all'){
+      } else if (size !== 'all' && brand == 'all'){
         search_size(size, url, list, shoeTemplate);
       } else if (brand !== 'all' && size !== 'all') {
         search_brand_size(url, brand, size, list, shoeTemplate);
-      } else {
+      } else{
         showAll({prop: ""});
-      }
+      };
   });
 
   //call show all function
