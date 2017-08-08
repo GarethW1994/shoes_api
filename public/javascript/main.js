@@ -10,31 +10,40 @@ $(document).ready(function(){
     var listSource = document.getElementById('list').innerHTML;
     var shoeTemplate = Handlebars.compile(listSource);
 
-function showAll() {
+    var newShoeData = [];
+
+function showAll(prop) {
+      let property = prop.prop;
       //AJAX Call
       //Retrieving all the data
       $.ajax({
           url: url,
           type: 'GET'
       }).done(function(data) {
+          log('Fetched All Shoes...')
           log(data);
-          let shoeData = data.data.shoes;
+      }).then(function(data){
+        let shoeData = data.data.shoes;
 
-          //  log(list);
-          list.innerHTML = shoeTemplate({
-              shoes: shoeData
-          });
-          //populate_menus
+        newShoeData = shoeData;
+        //  log(list);
+        list.innerHTML = shoeTemplate({
+            shoes: shoeData
+        });
+
+        if (property !== "") {
           populate_menus(shoeData);
+        }
       });
 }
+
 
   $('#textSearch').on('change', function(e){
       let string = e.target.value.toLowerCase();
       let query = string.charAt(0).toUpperCase() + string.slice(1);
 
       if (query === "") {
-        showAll();
+        showAll({prop: query});
       } else {
         //call search_brand function
         search_brand(query, url, list, shoeTemplate);
@@ -45,9 +54,17 @@ function showAll() {
       let brand = this.children.brand.value;
       let size = this.children.size.value;
 
-      search_brand_size(url, brand, size);
+      if (brand !== 'all') {
+        search_brand(brand, url, list, shoeTemplate);
+      } else if (size !== 'all'){
+        search_size(size, url, list, shoeTemplate);
+      } else if (brand !== 'all' && size !== 'all') {
+        search_brand_size(url, brand, size, list, shoeTemplate);
+      } else {
+        showAll({prop: ""});
+      }
   });
 
   //call show all function
-  showAll();
+  showAll({prop: 'show all'});
 });

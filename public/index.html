@@ -18,14 +18,16 @@
     <div class="searchOptions">
       <script src="main.js" id="menuList" type="type/x-handlebars" charset="utf-8">
               Size: <select class="sizeMenu" name="size">
+                      <option value="all">All</option>
               {{#each menuList}}
                       <option value="{{this.size}}">{{this.size}}</option>
               {{/each}}
               </select>
 
               Brand: <select class="brandMenu" name="brand">
+                      <option value="all">All</option>
                 {{#each menuList}}
-                  <option value="{{this.brand}}">{{this.brand}}</option>
+                      <option value="{{this.brand}}">{{this.brand}}</option>
                 {{/each}}
               </select>
 
@@ -52,8 +54,8 @@
     <script src="./javascript/lib/handlebars-v4.0.5.js" charset="utf-8"></script>
     <script src="./javascript/lib/jquery-1.12.0.min.js" charset="utf-8"></script>
     <!-- link to javascript -->
-    <script src="./javascript/search_brand.js" charset="utf-8"></script>
     <script src="./javascript/search_brand_size.js" charset="utf-8"></script>
+    <script src="./javascript/search_brand.js" charset="utf-8"></script>
     <script src="./javascript/populate_menus.js" charset="utf-8"></script>
     <script src="./javascript/main.js" charset="utf-8"></script>
 </body>

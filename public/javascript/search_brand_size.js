@@ -1,8 +1,10 @@
-function search_brand_size(url, brand, size) {
+function search_brand_size(url, brand, size, list, shoeTemplate) {
   $.ajax({
     url: url + "brand/" + brand + "/size/" + size,
     type: 'GET'
   }).done(function(results){
-      log(results);
+    let searchResults = results.data;
+
+    list.innerHTML = shoeTemplate({shoes: searchResults});
   });
 };
