@@ -10,6 +10,7 @@
 <body>
     <h1>Shoe Catalogue</h1>
 
+    <h4>Search Functionality: </h4>
     <form>
         <input type="text" name="search" placeholder="search shoe..." id="textSearch">
     </form>
@@ -35,7 +36,7 @@
       </script>
     </div>
 
-
+<h3>List of Shoes:</h3>
     <ul id="shoeList">
         <script src="main.js" id="list" type="type/x-handlebars">
           {{#if shoes}}
@@ -45,11 +46,50 @@
             </li>
             {{/each}}
             {{else}}
-              <li>Nothing found :(</li>
-            {{/if}}
-        </script>
+              <li>Nothing found (sad-face)</li>
+        {{/if}}
+            </script>
     </ul>
 
+<h4>Update Stock Functionality</h4>
+  <form class="" action="index.html" method="post">
+    <table>
+      <tr>
+        <td>Search By ID: </td>
+        <td><input type="text" name="" value=""></td>
+      </tr>
+        <tr>
+          <td>ID:</td>
+          <td><input type="text" name="" value="" placeholder="ID" disabled="true"></td>
+        </tr>
+        <tr>
+          <td>Brand:</td>
+          <td><input type="text" name="" value="" placeholder="Brand" disabled="true"></td>
+        </tr>
+        <tr>
+          <td>Color:</td>
+          <td><input type="text" name="" value="" placeholder="Color" disabled="true"></td>
+        </tr>
+        <tr>
+          <td>Size:</td>
+          <td><input type="text" name="" value="" placeholder="Size" disabled="true"></td>
+        </tr>
+        <tr>
+          <td>Price:</td>
+          <td><input type="text" name="" value="" placeholder="Price" disabled="true"></td>
+        </tr>
+        <tr>
+          <td>In Stock:</td>
+          <td><input type="text" name="" value="" placeholder="In Stock"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><button type="button" name="button">Update Stock</button></td>
+        </tr>
+    </table>
+  </form>
+
+<h4>Add New Shoe Functionality</h4>
     <!-- link to libraries -->
     <script src="./javascript/lib/handlebars-v4.0.5.js" charset="utf-8"></script>
     <script src="./javascript/lib/jquery-1.12.0.min.js" charset="utf-8"></script>

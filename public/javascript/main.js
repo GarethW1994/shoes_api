@@ -1,6 +1,7 @@
 const log = console.log;
 //DOCUMENT READY
 $(document).ready(function(){
+    Handlebars.registerPartial('index', '{{name}}')
     //specify url
     var url = 'http://localhost:3107/api/shoes/';
     //display all the shoe information to the client
