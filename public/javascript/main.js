@@ -10,9 +10,7 @@ $(document).ready(function(){
     //initailising handlebars-v4
     var listSource = document.getElementById('list').innerHTML;
     var shoeTemplate = Handlebars.compile(listSource);
-
     var newShoeData = [];
-    var counter = 0;
 
 function showAll(prop) {
       let property = prop.prop;
@@ -37,9 +35,15 @@ function showAll(prop) {
           populate_menus(shoeData);
         }
 
-        populate_form(shoeData);
+        if (localStorage.count == undefined) {
+          localStorage.count = 0;
+        } else {
+          let count = Number(localStorage.count);
+          populate_form(shoeData, count);
+        }
       });
 };
+
 
   $('#textSearch').on('change', function(e){
       let string = e.target.value.toLowerCase();
@@ -73,30 +77,71 @@ function showAll(prop) {
   var formTemplate = Handlebars.compile(formSource);
   var formHolder = document.querySelector('.updateForm');
 
-
-  function populate_form(data, counter) {
-    log('populating form...');
-    log(counter);
-    if (counter == undefined) {
-      formHolder.innerHTML = formTemplate({
-        id: data[0].id,
-        brand: data[0].brand,
-        color: data[0].color,
-        size: data[0].size,
-        price: data[0].price,
-        in_stock: data[0].in_stock
-      });
+  $('.next').on('click', function(){
+    let count = Number(localStorage.count);
+    log(newShoeData.length)
+    if (count = newShoeData.length) {
+      count = newShoeData.length - 1;
+    } else {
+      count += 1;
     }
+    populate_form(newShoeData, count);
+    localStorage.setItem('count', count);
+  });
+
+  $('.prev').on('click', function(){
+    let count = Number(localStorage.count);
+    if (count <= 0) {
+      count = 0;
+    } else {
+      count -= 1;
+    }
+    populate_form(newShoeData, count);
+    localStorage.setItem('count', count);
+  });
+
+  $('#search_id').on('change', function(e){
+    let search_id = Number(this.value);
+    let search_data = [];
+
+    function search(data) {
+      return data.id == search_id;
+    }
+
+    let result = newShoeData.find(search);
+    search_data.push(result);
+
+      if (search_data[0] === undefined) {
+        log('shoe not found');
+      } else {
+        populate_form(search_data, 0);
+      }
+    });
+
+  function populate_form(data, count) {
+    log('populating form...');
+    formHolder.innerHTML = formTemplate({
+      id: data[count].id,
+      brand: data[count].brand,
+      color: data[count].color,
+      size: data[count].size,
+      price: data[count].price,
+      in_stock: data[count].in_stock
+    });
   }
 
-  var next = document.querySelector('.next');
+  var new_stock = 0;
+  var updated_id = 0;
+  $('.updateForm').on('change', function(e) {
+      let get_element = e.target.parentElement.parentElement.parentElement.children[0];
+      updated_id = Number(get_element.children[1].children[0].value);
+      new_stock = Number(e.target.value);
+  });
+
+  $('#update_stock').on('click', function(){
+      log(new_stock + " - " + updated_id);
+  });
+
   //call show all function
   showAll({prop: 'show all'});
-
-  $('.next').on('click', function(){
-    log('you clicked next');
-    // counter =+ 1;
-    // log(counter);
-    // populate_form(counter);
-  });
 });

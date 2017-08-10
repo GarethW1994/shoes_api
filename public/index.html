@@ -52,16 +52,17 @@
     </ul>
 
 <h4>Update Stock Functionality</h4>
+<div class="form_search">
+  Search By ID:
+  <input type="text" name="search_id" id="search_id">
+</div>
+
 <div class="updateForm">
 <script src="main.js" id="form" type="type/x-handlebars">
     <form class="" action="index.html" method="post">
     <table>
         <tr>
-            <td>Search By ID: </td>
-            <td><input type="text" name="" value=""></td>
-        </tr>
-        <tr>
-            <td>ID:</td>
+            <td>ID</td>
             <td><input type="text" name="" value="{{id}}" placeholder="ID" disabled="true"></td>
         </tr>
         <tr>
@@ -84,17 +85,15 @@
             <td>In Stock:</td>
             <td><input type="text" name="" value="{{in_stock}}" placeholder="In Stock"></td>
         </tr>
-        <tr>
-        <td></td>
-          <td><a href="#" class="next"/>Next</a> || <a href="#" class="prev">Prev</a></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><button type="button" name="button">Update Stock</button></td>
-        </tr>
-    </table>
-</form>
-</script>
+        </table>
+        </form>
+        </script>
+</div>
+
+<div class="form-controls">
+<button type="button" class="next">Next</button>|| <button type="button" class="prev">Prev</button>
+
+<button type="button" name="button" id="update_stock">Update Stock</button></td>
 </div>
 
 <h4>Add New Shoe Functionality</h4>
