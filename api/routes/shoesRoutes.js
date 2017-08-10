@@ -106,8 +106,10 @@ module.exports = function(Models) {
           })
         } else {
           //save ID and new stock in object
-          let query = {id: req.params.id, in_stock: parseInt(req.body)};
-          //log(json.Parse(query));
+          let query = {id: req.params.id, in_stock: req.body.stock};
+          var d = req.body;
+
+          log(d.stock);
           //update the current shoe in the database
           Models.Shoes.update({id: query.id}, {in_stock: query.in_stock}, function(err, results){
             if (err) {
