@@ -14,14 +14,9 @@ $(document).ready(function(){
 
 function showAll(prop) {
       let property = prop.prop;
-      //AJAX Call
       //Retrieving all the data
-      $.ajax({
-          url: url,
-          type: 'GET'
-      }).done(function(data) {
-          log('Fetched All Shoes...')
-          log(data);
+      $.get(url, function(err, data){
+        if (err) {log(err)};
       }).then(function(data){
         let shoeData = data.data.shoes;
 
@@ -45,7 +40,7 @@ function showAll(prop) {
 };
 
 
-  $('#textSearch').on('change', function(e){
+$('#textSearch').on('change', function(e){
       let string = e.target.value.toLowerCase();
       let query = string.charAt(0).toUpperCase() + string.slice(1);
 
@@ -55,7 +50,7 @@ function showAll(prop) {
         //call search_brand function
         search_brand(query, url, list, shoeTemplate);
     }
-  });
+});
 
   $('.searchOptions').on('click', function(e) {
       let brand = this.children.brand.value;
@@ -132,6 +127,7 @@ function showAll(prop) {
 
   var new_stock = 0;
   var updated_id = 0;
+
   $('.updateForm').on('change', function(e) {
       let get_element = e.target.parentElement.parentElement.parentElement.children[0];
       updated_id = Number(get_element.children[1].children[0].value);
@@ -140,7 +136,15 @@ function showAll(prop) {
 
   $('#update_stock').on('click', function(){
       log(new_stock + " - " + updated_id);
-  });
+      log(new_stock);
+      $.ajax({
+            url: url + "sold/" + updated_id,
+            data: {in_stock: new_stock },
+            type: "POST"
+        }).done(function(result){
+          log(result);
+        });
+      });
 
   //call show all function
   showAll({prop: 'show all'});
