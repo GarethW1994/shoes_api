@@ -10,7 +10,7 @@ module.exports = function(url) {
     //initialise schema
     const ShoesSchema = mongoose.Schema({
         id: {
-            type: Number,
+            type: String,
             Required: true,
             unique: true
         },
@@ -37,7 +37,7 @@ module.exports = function(url) {
     });
 
     ShoesSchema.index({id: 1}, {unique: true});
-    
+
     const Shoes = mongoose.model('Shoes', ShoesSchema);
 
     return {

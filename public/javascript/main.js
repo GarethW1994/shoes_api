@@ -136,16 +136,17 @@ $('#textSearch').on('change', function(e){
 
   $('#update_stock').on('click', function(){
       log(new_stock + " - " + updated_id);
-      let updated_data = [{stock: new_stock}];
-      $.ajax({
-            url: url + "sold/" + updated_id,
-            data: {stock : new_stock},
-            type: "POST",
-            contentType: 'application/x-www-form-urlencoded'
-        }).done(function(result){
-          log(result);
-        });
+        update_stock(url, new_stock, updated_id);
+        showAll({prop: 'show all'});
       });
+
+  $('.add_form').on('change', function(e){
+      let result  = add_shoe_validations(e);
+
+      // if (result !== false) {
+      //    if ()
+      // }
+  });
 
   //call show all function
   showAll({prop: 'show all'});

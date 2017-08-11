@@ -97,6 +97,51 @@
 </div>
 
 <h4>Add New Shoe Functionality</h4>
+<div class="form_errors">
+<script type="text/x-handlebars" id="add_form_errors">
+  {{#if error}}
+  <p>{{error.size}}</p>
+  <p>{{error.price}}</p>
+  <p>{{error.in_stock}}</p>
+  {{/if}}
+</script>
+</div>
+
+<div class="add_form">
+    <form class="" action="index.html" method="post">
+    <table>
+        <tr>
+            <td>ID:</td>
+            <td><input type="text" name="id" placeholder="ID"></td>
+        </tr>
+        <tr>
+            <td>Brand:</td>
+            <td><input type="text" name="brand" placeholder="Brand"></td>
+        </tr>
+        <tr>
+            <td>Color:</td>
+            <td><input type="text" name="color" placeholder="Color"></td>
+        </tr>
+        <tr>
+            <td>Size:</td>
+            <td><input type="text" name="size" placeholder="Size"></td>
+        </tr>
+        <tr>
+            <td>Price:</td>
+            <td><input type="text" name="price" placeholder="Price"></td>
+        </tr>
+        <tr>
+            <td>In Stock:</td>
+            <td><input type="text" name="in_stock" placeholder="In Stock"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><button type="button" name="button" id="add_stock">Add Shoe</button></td></td>
+        </tr>
+        </table>
+        </form>
+</div>
+
     <!-- link to libraries -->
     <script src="./javascript/lib/handlebars-v4.0.5.js" charset="utf-8"></script>
     <script src="./javascript/lib/jquery-1.12.0.min.js" charset="utf-8"></script>
@@ -105,6 +150,8 @@
     <script src="./javascript/search_brand.js" charset="utf-8"></script>
     <script src="./javascript/search_size.js" charset="utf-8"></script>
     <script src="./javascript/populate_menus.js" charset="utf-8"></script>
+    <script src="./javascript/update_stock.js" charset="utf-8"></script>
+    <script src="./javascript/add_form_validations.js" charset="utf-8"></script>
     <script src="./javascript/main.js" charset="utf-8"></script>
 </body>
 
