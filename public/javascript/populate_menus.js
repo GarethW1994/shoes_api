@@ -1,13 +1,13 @@
-function populate_menus(data) {
-    //initialise handlebars-v4
-    let menu = document.getElementById('menuList').innerHTML;
-    let menuTemplate = Handlebars.compile(menu);
+//initialise handlebars-v4
+var menu = document.getElementById('menuList').innerHTML;
+var menuTemplate = Handlebars.compile(menu);
 
+function populate_menus(data) {
     // $('.searchOptions').innerHTML = menuTemplate({menuList: data});
 
     let searchOptions = document.querySelector('.searchOptions');
 
     log(searchOptions);
-    
+
     searchOptions.innerHTML = menuTemplate({menuList: data});
 };
