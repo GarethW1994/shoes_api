@@ -10,7 +10,7 @@ module.exports = function(url) {
     //initialise schema
     const ShoesSchema = mongoose.Schema({
         id: {
-            type: String,
+            type: Number,
             Required: true,
             unique: true
         },
