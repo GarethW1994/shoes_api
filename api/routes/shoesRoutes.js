@@ -107,9 +107,9 @@ module.exports = function(Models) {
         } else {
           //save ID and new stock in object
           let query = {id: req.params.id, in_stock: req.body.stock};
-          log(query.in_stock);
+          log(query.id);
           //update the current shoe in the database
-          Models.Shoes.update({id: query.id}, {in_stock: query.in_stock}, function(err, results){
+          Models.Shoes.update({id: query.id}, {in_stock: 50}, function(err, results){
             if (err) {
               res.json({
                 response: "Status Failure",
