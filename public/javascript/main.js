@@ -142,6 +142,37 @@ $('#textSearch').on('change', function(e){
 
   $('.add_form').on('change', function(e){
       let result  = add_shoe_validations(e);
+      let shoe_id = $('#id').val();
+      let brand_name = $('#brand').val();
+      let shoe_color = $('#color').val();
+      let shoe_size = $('#size').val();
+      let shoe_price = $('#price').val();
+      let shoe_stock = $('#in_stock').val();
+
+      if (result === true) {
+        let shoe_obj = {
+          id : parseInt(shoe_id),
+          brand: brand_name,
+          color: shoe_color,
+          size: parseInt(shoe_size),
+          price: parseFloat(shoe_price),
+          in_stock: parseInt(shoe_stock)
+        }
+        log(shoe_obj);
+
+        let status = "";
+        for (item in shoe_obj) {
+          log(shoe_obj[item]);
+          if (!shoe_obj[item]) {  
+            status = 'incomplete';
+          } else if (shoe_obj[item] === 'NaN'){
+            status = 'incomplete';
+          } else {
+            status = 'success';
+          }
+        }
+        log(status);
+      }
   });
 
   //call show all function
