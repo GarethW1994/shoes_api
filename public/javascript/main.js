@@ -137,15 +137,11 @@ $('#textSearch').on('change', function(e){
   $('#update_stock').on('click', function(){
       log(new_stock + " - " + updated_id);
       update_stock(url, new_stock, updated_id);
-      //  showAll({prop: 'show all'});
+       showAll({prop: 'show all'});
       });
 
   $('.add_form').on('change', function(e){
       let result  = add_shoe_validations(e);
-
-      // if (result !== false) {
-      //    if ()
-      // }
   });
 
   //call show all function

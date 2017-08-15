@@ -106,12 +106,10 @@ module.exports = function(Models) {
           })
         } else {
           //save ID and new stock in object
-          let new_stock = {id: Number(req.params.id)};
-          log(new_stock);
+          let query = {id: Number(req.params.id), in_stock: Number(req.body.stock)};
+          log(query);
           // First find the Shoe to be updated_id
-
-          Models.Shoes.find(new_stock, function(err, results){
-              
+          Models.Shoes.update({id: query.id}, {in_stock: query.in_stock}, function(err, results){
             if (err) {
               res.json({
                 response: 'Status Failure',
@@ -121,10 +119,12 @@ module.exports = function(Models) {
               });
               return next(err);
             }
-            log(results);
+            res.json({
+              response: 'Updated Stock!',
+              status: 200,
+              result: results
+            });
           });
-            // set the qty on the results
-            //do a save on that object
         }
     }
 

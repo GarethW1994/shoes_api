@@ -5,6 +5,6 @@ function update_stock(url, new_stock, updated_id) {
         type: "POST",
         contentType: 'application/x-www-form-urlencoded'
     }).done(function(result){
-      return result;
+      log(result);
     });
 };
