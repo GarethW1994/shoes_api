@@ -58,7 +58,7 @@
 {{#if shoes}}
     {{#each shoes}}
   <div class="card mb-3">
-      <img class="card-img-top" src="{{src}}" width="200px" height="200px" alt="Card image cap">
+      <img class="card-img-top" src="{{image}}" width="80px" height="200px" alt="Card image cap">
       <div class="card-body">
           <h4 class="card-title">{{brand}}</h4>
           <ul class="list-group list-group-flush">
@@ -96,7 +96,7 @@
           <div class="modal-body">
               <form>
                     <div class="form-group">
-                      <input type="text" name="search_id" id="search_id" clas="form-control" placeholder="Find By ID...">
+                      <input type="text" name="search_id" id="search_id" class="form-control" placeholder="Find By ID...">
                     </div>
                   <fieldset disabled>
                     <div class="form-group">
@@ -185,12 +185,7 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="FormControlFile">Select Shoe Image:</label>
-                        <input type="file" class="form-control-file" id="image_file" name="file">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="ImageUrl">Or Enter Shoe Image URL:</label>
+                        <label for="ImageUrl">Enter or Paste Shoe Image URL:</label>
                         <input type="text" class="form-control" id="image_url" name="url_img">
                     </div>
 

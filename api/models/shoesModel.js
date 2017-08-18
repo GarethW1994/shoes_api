@@ -14,6 +14,10 @@ module.exports = function(url) {
             Required: true,
             unique: true
         },
+        image: {
+          type: 'String',
+          default: 'http://www.freeiconspng.com/uploads/no-image-icon-15.png'
+        },
         color: {
             type: String,
             default: 'Black'

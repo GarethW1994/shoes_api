@@ -83,10 +83,9 @@ $('#textSearch').on('keyup', function(e){
       }
   });
 
-  var img = document.getElementById("image_file");
   $('.add_form').on('change', function(e){
       let result  = add_shoe_validations(e);
-      let shoe_img = $('#image_url').val() || $('#image_file').val();
+      let shoe_img = $('#image_url').val();
       let shoe_id = $('#id').val();
       let brand_name = $('#brand').val();
       let shoe_color = $('#color').val();
@@ -94,16 +93,9 @@ $('#textSearch').on('keyup', function(e){
       let shoe_price = $('#price').val();
       let shoe_stock = $('#in_stock').val();
 
- // var fReader = new FileReader();
- // log(img.files[0])
- // fReader.readAsDataURL(img.files[0]);
- // fReader.onloadend = function(event) {
- //   var image = event.target.result;
- // }
-// log(image)
         shoe_obj = {
-          image: shoe_img,
           id : parseInt(shoe_id),
+          image: shoe_img,
           brand: brand_name,
           color: shoe_color,
           size: parseInt(shoe_size),
@@ -116,6 +108,7 @@ $('#textSearch').on('keyup', function(e){
       let result = add_shoe(shoe_obj);
       render_data({prop: 'show all'});
 
+      let shoe_url = $("#image_url").val("");
       let shoe_id = $('#id').val("");
       let brand_name = $('#brand').val("");
       let shoe_color = $('#color').val("");

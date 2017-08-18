@@ -22,24 +22,30 @@ var render_data = function(prop) {
         let shoeData = get_data(cb);
           shoeData.then(function(data) {
             log(data);
+
+          if (data !== undefined) {
             let shoe_data = data.data.shoes;
             let sorted_data = shoe_data.sort(compareValues('brand'));
             newShoeData = shoe_data;
             //Populate Shoes in list on html
             list.innerHTML = shoeTemplate({
-                shoes: sorted_data
+              shoes: sorted_data
             });
+
             //check if the prop param is not equal to empty string
             if (prop.prop !== "") {
               populate_menus(sorted_data);
             }
-
             if (localStorage.count == undefined) {
               localStorage.count = 0;
             } else {
               let count = Number(localStorage.count);
-              populate_form(shoe_data, count);
+              if (count > shoe_data.length) {
+                count = shoe_data.length - 1;
+                populate_form(shoe_data, count);
+              }
             }
+          }
           });
 };
   //call render all function

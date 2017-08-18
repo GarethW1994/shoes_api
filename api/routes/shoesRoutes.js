@@ -141,6 +141,7 @@ module.exports = function(Models) {
           // //new shoe
           let shoe = {
             id: Number(req.body.data.id),
+            image: req.body.data.image || 'http://www.freeiconspng.com/uploads/no-image-icon-15.png',
             brand: req.body.data.brand,
             color: req.body.data.color,
             size: Number(req.body.data.size),

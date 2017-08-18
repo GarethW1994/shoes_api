@@ -10,7 +10,7 @@ var stock_template = Handlebars.compile(stock_src);
 var output = "";
 var url_form = document.querySelector('#url_form');
 function add_shoe_validations(e){
-  if (e.target.name === 'url_img' || e.target.name === 'file') {
+  if (e.target.name === 'url_img') {
         let value = e.target.value;
         let jpg = value.includes('.jpg');
         let png = value.includes('.png');
