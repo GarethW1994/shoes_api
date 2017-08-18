@@ -41,7 +41,10 @@ var render_data = function(prop) {
             } else {
               let count = Number(localStorage.count);
               if (count > shoe_data.length) {
-                count = shoe_data.length - 1;
+                count = 0;
+                localStorage.count = 0;
+                populate_form(shoe_data, count);
+              } else {
                 populate_form(shoe_data, count);
               }
             }
