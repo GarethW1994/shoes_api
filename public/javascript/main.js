@@ -1,180 +1,46 @@
 const log = console.log;
-//DOCUMENT READY
-$(document).ready(function(){
-    Handlebars.registerPartial('index', '{{name}}')
-    //specify url
-    var url = 'http://localhost:3107/api/shoes/';
-    //display all the shoe information to the client
-    var list = document.getElementById('shoeList');
+//specify url
+const url = 'http://localhost:3107/api/shoes/';
+//display all the shoe information to the client
+var list = document.getElementById('shoeList');
+//initailising handlebars-v4
+var listSource = document.getElementById('list').innerHTML;
+var shoeTemplate = Handlebars.compile(listSource);
 
-    //initailising handlebars-v4
-    var listSource = document.getElementById('list').innerHTML;
-    var shoeTemplate = Handlebars.compile(listSource);
-    var newShoeData = [];
+var newShoeData = [];
+var new_stock = 0;
+var updated_id = 0;
+var shoe_obj = {};
+const cb = function(err, data) {if (err) {return err}};
 
-function showAll(prop) {
-      let property = prop.prop;
-      //Retrieving all the data
-      $.get(url, function(err, data){
-        if (err) {log(err)};
-      }).then(function(data){
-        let shoeData = data.data.shoes;
+function get_data(cb) {
+  //Retrieving all the data
+   return $.get(url, cb);
+}
 
-        newShoeData = shoeData;
-        //  log(list);
-        list.innerHTML = shoeTemplate({
-            shoes: shoeData
-        });
+var render_data = function(prop) {
+        let shoeData = get_data(cb);
+          shoeData.then(function(data) {
+            log(data);
+            let shoe_data = data.data.shoes;
+            let sorted_data = shoe_data.sort(compareValues('brand'));
+            newShoeData = shoe_data;
+            //Populate Shoes in list on html
+            list.innerHTML = shoeTemplate({
+                shoes: sorted_data
+            });
+            //check if the prop param is not equal to empty string
+            if (prop.prop !== "") {
+              populate_menus(sorted_data);
+            }
 
-        if (property !== "") {
-          populate_menus(shoeData);
-        }
-
-        if (localStorage.count == undefined) {
-          localStorage.count = 0;
-        } else {
-          let count = Number(localStorage.count);
-          populate_form(shoeData, count);
-        }
-      });
+            if (localStorage.count == undefined) {
+              localStorage.count = 0;
+            } else {
+              let count = Number(localStorage.count);
+              populate_form(shoe_data, count);
+            }
+          });
 };
-
-
-$('#textSearch').on('change', function(e){
-      let string = e.target.value.toLowerCase();
-      let query = string.charAt(0).toUpperCase() + string.slice(1);
-
-      if (query === "") {
-        showAll({prop: query});
-      } else {
-        //call search_brand function
-        search_brand(query, url, list, shoeTemplate);
-    }
-});
-
-  $('.searchOptions').on('click', function(e) {
-      let brand = this.children.brand.value;
-      let size = this.children.size.value;
-      //search logic
-      if (brand !== 'all' && size == 'all') {
-        search_brand(brand, url, list, shoeTemplate);
-      } else if (size !== 'all' && brand == 'all'){
-        search_size(size, url, list, shoeTemplate);
-      } else if (brand !== 'all' && size !== 'all') {
-        search_brand_size(url, brand, size, list, shoeTemplate);
-      } else{
-        showAll({prop: ""});
-      };
-  });
-
-  //Update stock
-  var formSource = document.querySelector("#form").innerHTML;
-  var formTemplate = Handlebars.compile(formSource);
-  var formHolder = document.querySelector('.updateForm');
-
-  $('.next').on('click', function(){
-    let count = Number(localStorage.count);
-    log(newShoeData.length)
-    if (count = newShoeData.length) {
-      count = newShoeData.length - 1;
-    } else {
-      count += 1;
-    }
-    populate_form(newShoeData, count);
-    localStorage.setItem('count', count);
-  });
-
-  $('.prev').on('click', function(){
-    let count = Number(localStorage.count);
-    if (count <= 0) {
-      count = 0;
-    } else {
-      count -= 1;
-    }
-    populate_form(newShoeData, count);
-    localStorage.setItem('count', count);
-  });
-
-  $('#search_id').on('change', function(e){
-    let search_id = Number(this.value);
-    let search_data = [];
-
-    function search(data) {
-      return data.id == search_id;
-    }
-
-    let result = newShoeData.find(search);
-    search_data.push(result);
-
-      if (search_data[0] === undefined) {
-        log('shoe not found');
-      } else {
-        populate_form(search_data, 0);
-      }
-    });
-
-  function populate_form(data, count) {
-    log('populating form...');
-    formHolder.innerHTML = formTemplate({
-      id: data[count].id,
-      brand: data[count].brand,
-      color: data[count].color,
-      size: data[count].size,
-      price: data[count].price,
-      in_stock: data[count].in_stock
-    });
-  }
-
-  var new_stock = 0;
-  var updated_id = 0;
-
-  $('.updateForm').on('change', function(e) {
-      let get_element = e.target.parentElement.parentElement.parentElement.children[0];
-      updated_id = Number(get_element.children[1].children[0].value);
-      new_stock = Number(e.target.value);
-  });
-
-  $('#update_stock').on('click', function(){
-      log(new_stock + " - " + updated_id);
-      update_stock(url, new_stock, updated_id);
-       showAll({prop: 'show all'});
-      });
-
-  $('.add_form').on('change', function(e){
-      let result  = add_shoe_validations(e);
-      let shoe_id = $('#id').val();
-      let brand_name = $('#brand').val();
-      let shoe_color = $('#color').val();
-      let shoe_size = $('#size').val();
-      let shoe_price = $('#price').val();
-      let shoe_stock = $('#in_stock').val();
-
-      if (result === true) {
-        let shoe_obj = {
-          id : parseInt(shoe_id),
-          brand: brand_name,
-          color: shoe_color,
-          size: parseInt(shoe_size),
-          price: parseFloat(shoe_price),
-          in_stock: parseInt(shoe_stock)
-        }
-        log(shoe_obj);
-
-        let status = "";
-        for (item in shoe_obj) {
-          log(shoe_obj[item]);
-          if (!shoe_obj[item]) {  
-            status = 'incomplete';
-          } else if (shoe_obj[item] === 'NaN'){
-            status = 'incomplete';
-          } else {
-            status = 'success';
-          }
-        }
-        log(status);
-      }
-  });
-
-  //call show all function
-  showAll({prop: 'show all'});
-});
+  //call render all function
+  var render = render_data({prop: 'show all'});

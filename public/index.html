@@ -4,155 +4,292 @@
 <head>
     <meta charset="utf-8">
     <title>Shoe Catalogue</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- link to libraries -->
+    <link rel="stylesheet" href="./css/lib/bootstrap.min.css">
+    <script src="./javascript/lib/handlebars-v4.0.5.js" charset="utf-8"></script>
+    <script src="./javascript/lib/jquery-1.12.0.min.js" charset="utf-8"></script>
+    <script src="./javascript/lib/jquery.min.js"></script>
 </head>
 
 <body>
-    <h1>Shoe Catalogue</h1>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" name="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">Shoe Catalogue API</a>
+        <div class="collapse navbar-collapse" id="navbar">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active"><a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Github</a></li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search..." id="textSearch" aria-label="Search">
+            <br/>
+            <button class="btn btn-sm align-middle btn-outline-secondary" tabindex="-1" data-toggle="modal" data-target="#updateModal" id="update_form_btn" type="button" name="button" aria-hidden="true">Update Stock</button>
+            <br/>
+            <button class="btn btn-sm align-middle btn-outline-secondary" tabindex="-1" data-toggle="modal" data-target="#addModal" id="add_form_btn" type="button" name="button"  aria-hidden="true">Add New Shoe</button>
+          </form>
+        </div>
+  </nav>
 
-    <h4>Search Functionality: </h4>
-    <form>
-        <input type="text" name="search" placeholder="search shoe..." id="textSearch">
-    </form>
-    <br/>
-
-    <div class="searchOptions">
+<div class="container_filter container-fluid">
+    <div class="searchOptions row">
       <script src="main.js" id="menuList" type="type/x-handlebars" charset="utf-8">
-              Size: <select class="sizeMenu" name="size">
-                      <option value="all">All</option>
-              {{#each menuList}}
-                      <option value="{{this.size}}">{{this.size}}</option>
-              {{/each}}
-              </select>
+      <select class="sizeMenu form-control col" name="size">
+      <option value="all">All Sizes</option>
+      {{#each size}}
+      <option value="{{this}}">{{this}}</option>
+      {{/each}}
+      </select>
 
-              Brand: <select class="brandMenu" name="brand">
-                      <option value="all">All</option>
-                {{#each menuList}}
-                      <option value="{{this.brand}}">{{this.brand}}</option>
-                {{/each}}
-              </select>
-
-              <button name="searchButton">Search</button>
+      <select class="brandMenu form-control col" name="brand">
+      <option value="all">All Brands</option>
+      {{#each brand}}
+      <option value="{{this}}">{{this}}</option>
+      {{/each}}
+      </select>
       </script>
     </div>
-
-<h3>List of Shoes:</h3>
-    <ul id="shoeList">
-        <script src="main.js" id="list" type="type/x-handlebars">
-          {{#if shoes}}
-            {{#each shoes}}
-            <li>
-                id: {{id}} Brand: {{brand}} Color: {{color}} Size: {{size}} Price: {{price}} In Stock: {{in_stock}}
-            </li>
-            {{/each}}
-            {{else}}
-              <li>Nothing found (sad-face)</li>
-        {{/if}}
-            </script>
-    </ul>
-
-<h4>Update Stock Functionality</h4>
-<div class="form_search">
-  Search By ID:
-  <input type="text" name="search_id" id="search_id">
 </div>
 
-<div class="updateForm">
-<script src="main.js" id="form" type="type/x-handlebars">
-    <form class="" action="index.html" method="post">
-    <table>
-        <tr>
-            <td>ID</td>
-            <td><input type="text" name="" value="{{id}}" placeholder="ID" disabled="true"></td>
-        </tr>
-        <tr>
-            <td>Brand:</td>
-            <td><input type="text" name="" value="{{brand}}" placeholder="Brand" disabled="true"></td>
-        </tr>
-        <tr>
-            <td>Color:</td>
-            <td><input type="text" name="" value="{{color}}" placeholder="Color" disabled="true"></td>
-        </tr>
-        <tr>
-            <td>Size:</td>
-            <td><input type="text" name="" value="{{size}}" placeholder="Size" disabled="true"></td>
-        </tr>
-        <tr>
-            <td>Price:</td>
-            <td><input type="text" name="" value="{{price}}" placeholder="Price" disabled="true"></td>
-        </tr>
-        <tr>
-            <td>In Stock:</td>
-            <td><input type="text" name="" value="{{in_stock}}" placeholder="In Stock"></td>
-        </tr>
-        </table>
-        </form>
-        </script>
-</div>
-
-<div class="form-controls">
-<button type="button" class="next">Next</button>|| <button type="button" class="prev">Prev</button>
-
-<button type="button" name="button" id="update_stock">Update Stock</button></td>
-</div>
-
-<h4>Add New Shoe Functionality</h4>
-<div class="form_errors">
-<script type="text/x-handlebars" id="add_form_errors">
-  {{#if error}}
-  <p>{{error.size}}</p>
-  <p>{{error.price}}</p>
-  <p>{{error.in_stock}}</p>
-  {{/if}}
+<div class="container_shoes" id="shoeList">
+  <script src="main.js" id="list" type="type/x-handlebars">
+{{#if shoes}}
+    {{#each shoes}}
+  <div class="card mb-3">
+      <img class="card-img-top" src="{{src}}" width="200px" height="200px" alt="Card image cap">
+      <div class="card-body">
+          <h4 class="card-title">{{brand}}</h4>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Color: {{color}}</li>
+            <li class="list-group-item">Size: {{size}}</li>
+            <li class="list-group-item">Price: {{price}}</li>
+          </ul>
+          <p class="card-text"><small class="text-muted">We currently have {{in_stock}} shoes in stock of this item.</small></p>
+      </div>
+  </div>
+    {{/each}}
+    {{else}}
+    <div class="card mb-3">
+        <img class="card-img-top" src="http://www.icone-png.com/png/19/18631.png" width="80px" height="200px" alt="Card image cap">
+        <div class="card-body">
+            <h4 class="card-title">Not Found.</h4>
+            <p class="card-text">Seems like we do not have the shoe in that size. Try searching for another size. We are sorry!</p>
+        </div>
+    </div>
+{{/if}}
 </script>
 </div>
 
-<div class="add_form">
-    <form class="" action="index.html" method="post">
-    <table>
-        <tr>
-            <td>ID:</td>
-            <td><input type="text" id="id" name="id" placeholder="ID"></td>
-        </tr>
-        <tr>
-            <td>Brand:</td>
-            <td><input type="text" id="brand" name="brand" placeholder="Brand"></td>
-        </tr>
-        <tr>
-            <td>Color:</td>
-            <td><input type="text" id="color" name="color" placeholder="Color"></td>
-        </tr>
-        <tr>
-            <td>Size:</td>
-            <td><input type="text" id="size" name="size" placeholder="Size"></td>
-        </tr>
-        <tr>
-            <td>Price:</td>
-            <td><input type="text" id="price" name="price" placeholder="Price"></td>
-        </tr>
-        <tr>
-            <td>In Stock:</td>
-            <td><input type="text" id="in_stock" name="in_stock" placeholder="In Stock"></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><button type="button" name="button" id="add_stock">Add Shoe</button></td></td>
-        </tr>
-        </table>
-        </form>
+<!-- Update Modal -->
+<div class="updateForm modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+  <script src="main.js" id="form" type="type/x-handlebars">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+                <h5 class="modal-title" id="updateModalLabel">Update Existing Stock</h5>
+                <button type="button" class="close" data-dismiss="modal" name="button" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+          </div>
+          <div class="modal-body">
+              <form>
+                    <div class="form-group">
+                      <input type="text" name="search_id" id="search_id" clas="form-control" placeholder="Find By ID...">
+                    </div>
+                  <fieldset disabled>
+                    <div class="form-group">
+                      <label for="ID">ID:</label>
+                      <input type="text" id="disabledTextInput" class="form-control" name="id" value="{{id}}" placeholder="id">
+                    </div>
+                    <div class="form-group">
+                      <label for="Brand">Brand:</label>
+                      <input type="text" id="disabledTextInput" class="form-control" name="brand" value="{{brand}}" placeholder="id">
+                    </div>
+                    <div class="form-group">
+                      <label for="Color">Color:</label>
+                      <input type="text" id="disabledTextInput" class="form-control" name="color" value="{{color}}" placeholder="id">
+                    </div>
+                    <div class="form-group">
+                      <label for="Size">Size:</label>
+                      <input type="text" id="disabledTextInput" class="form-control" name="size" value="{{size}}" placeholder="id">
+                    </div>
+                    <div class="form-group">
+                      <label for="Price">Price:</label>
+                      <input type="text" id="disabledTextInput" class="form-control" name="price" value="{{price}}" placeholder="id">
+                    </div>
+                  </fieldset>
+                  <div class="form-group">
+                    <label for="In Stock">In Stock:</label>
+                    <input type="text" class="form-control" name="in_stock" value="{{in_stock}}" placeholder="id">
+                  </div>
+                  <div class="form-group">
+                  <button type="button" class="prev" name="prev">Prev</button>
+                  <button type="button" class="next" name="next">Next</button>
+                  </div>
+              </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" name="button" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" name="update_stock" id="update_stock">Update Changes</button>
+          </div>
+      </div>
+    </div>
+      </script>
 </div>
 
-    <!-- link to libraries -->
-    <script src="./javascript/lib/handlebars-v4.0.5.js" charset="utf-8"></script>
-    <script src="./javascript/lib/jquery-1.12.0.min.js" charset="utf-8"></script>
+<div class="modal fade bd-example-modal-sm" id="notify_modal" tabindex="-1" role="dialog" aria-labelledby="errorModal" aria-hidden="true">
+  <script src="main.js" id="small_modal" type="type/x-handlebars">
+  <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+      {{#if type_error}}
+      <div class="modal-header">
+            <h5 class="modal-title">{{title}}</h5>
+            <button type="button" class="close" data-dismiss="modal" name="button" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+      </div>
+      <div class="modal-body">
+        <p>{{type_error}}</p>
+          <div class="alert alert-danger" role="alert">{{message}}</div>
+      </div>
+      {{else}}
+      <div class="modal-header">
+            <h5 class="modal-title">{{title}}</h5>
+            <button type="button" class="close" data-dismiss="modal" name="button" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+      </div>
+      <div class="modal-body">
+          <div class="alert alert-success" role="alert">{{message}}</div>
+      </div>
+      {{/if}}
+      </div>
+    </div>
+      </script>
+  </div>
+
+  <script src="main.js" id="add_form" type="type/x-handlebars">
+  </script>
+
+  <div class="add_form modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                  <h5 class="modal-title" id="addModalLabel">Add A New Shoe</h5>
+                  <button type="button" class="close" data-dismiss="modal" name="button" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="FormControlFile">Select Shoe Image:</label>
+                        <input type="file" class="form-control-file" id="image_file" name="file">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ImageUrl">Or Enter Shoe Image URL:</label>
+                        <input type="text" class="form-control" id="image_url" name="url_img">
+                    </div>
+
+                  <div class="form-group" id="url_form">
+                    <script src="main.js" id="error_url" type="type/x-handlebars">
+                    {{#if error.url}}
+                    <div class="alert alert-danger" role="alert">{{error.url}}</div>
+                    {{/if}}
+                    </script>
+                  </div>
+
+                    <div class="form-group">
+                        <label for="Shoe ID">Shoe ID:</label>
+                        <input type="text" class="form-control" id="id" name="id" value="" placeholder="ID">
+                    </div>
+
+                    <div class="form-group" id="id_form">
+                      <script src="main.js" id="error_id" type="type/x-handlebars">
+                      {{#if error.id}}
+                      <div class="alert alert-danger" role="alert">{{error.id}}</div>
+                      {{/if}}
+                      </script>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Brand">Brand:</label>
+                      <input type="text" class="form-control" id="brand" name="brand" value="" placeholder="Brand">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Color">Color:</label>
+                      <input type="text" class="form-control" id="color" name="color" placeholder="Color">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Size">Select Shoe Size:</label>
+                        <select class="form-control" name="size" id="size">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Price">Price:</label>
+                      <input type="text" class="form-control" id="price" name="price" placeholder="Price">
+                    </div>
+
+                    <div class="form-group" id="price_form">
+                      <script src="main.js" id="error_price" type="type/x-handlebars">
+                      {{#if error.price}}
+                      <div class="alert alert-danger" role="alert">{{error.price}}</div>
+                      {{/if}}
+                      </script>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="In Stock">Stock:</label>
+                      <input type="text" class="form-control" id="in_stock" name="stock" placeholder="Stock">
+                    </div>
+
+                    <div class="form-group" id="stock_form">
+                      <script src="main.js" id="error_stock" type="type/x-handlebars">
+                      {{#if error.stock}}
+                      <div class="alert alert-danger" role="alert">{{error.stock}}</div>
+                      {{/if}}
+                      </script>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" name="button" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary" name="add_stock" id="add_stock">Save</button>
+            </div>
+        </div>
+      </div>
+  </div>
+
+    <script src="./javascript/lib/popper.min.js" charset="utf-8"></script>
+    <script src="./javascript/lib/bootstrap.js" charset="utf-8"></script>
+
     <!-- link to javascript -->
     <script src="./javascript/search_brand_size.js" charset="utf-8"></script>
     <script src="./javascript/search_brand.js" charset="utf-8"></script>
     <script src="./javascript/search_size.js" charset="utf-8"></script>
+    <script src="./javascript/object_sorting_algorithm.js" charset="utf-8"></script>
     <script src="./javascript/populate_menus.js" charset="utf-8"></script>
+    <script src="./javascript/populate_form.js" charset="utf-8"></script>
     <script src="./javascript/update_stock.js" charset="utf-8"></script>
     <script src="./javascript/add_form_validations.js" charset="utf-8"></script>
+    <script src="./javascript/add_shoe.js" charset="utf-8"></script>
     <script src="./javascript/main.js" charset="utf-8"></script>
+    <script src="./javascript/events.js" charset="utf-8"></script>
 </body>
-
 </html>

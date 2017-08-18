@@ -131,19 +131,26 @@ module.exports = function(Models) {
     //Add a new shoe route
     const addShoe = function(req, res, next) {
         // check if the body property exits.
-        if (!req.body.id) {
+        if (!req.body) {
           log("There is no body property on the request");
           res.json({
             response: "No body property found",
             status: 503
           });
         } else {
-          //new shoe
-          let shoe = req.body;
+          // //new shoe
+          let shoe = {
+            id: Number(req.body.data.id),
+            brand: req.body.data.brand,
+            color: req.body.data.color,
+            size: Number(req.body.data.size),
+            price: Number(req.body.data.price),
+            in_stock: Number(req.body.data.in_stock)
+          };
 
           log(shoe);
 
-          //save shoe to the database
+        //   //save shoe to the database
           Models.Shoes
               .create(shoe, function(err, results) {
                 if (err){
