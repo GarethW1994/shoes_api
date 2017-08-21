@@ -78,6 +78,13 @@ app.post('/api/shoes/sold/:id', shoesRoutes.sold);
 //Add a new shoe route
 app.post('/api/shoes/', shoesRoutes.addShoe);
 
+//create port
+var port = process.env.PORT || 3107;
+
+app.get('/get_url', function(req, res) {
+    res.json({url: mongoURL, port: port});
+});
+
 //Not Found Error Handling
 app.use(function(req, res, next){
     var err = new Error('Not Found');
@@ -99,12 +106,7 @@ app.use(function(req, res, next){
 //     });
 // });
 
-//create port
-var port = process.env.PORT || 3107;
 
-app.get('/get_url', function(req, res) {
-    res.json({url: mongoURL, port: port});
-});
 
 //port listen function
 app.listen(port, function() {
