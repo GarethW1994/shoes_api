@@ -46,7 +46,7 @@ app.use(function(req, res, next){
 ///////////////////GET ROUTES///////////////////////
 //root
 app.get('/', function(req, res){
-    res.json({heading: 'Shoe Catalogue'});
+    res.redirect('/static');
 });
 
 
