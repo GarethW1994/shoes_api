@@ -50,7 +50,7 @@ app.get('/', function(req, res){
 });
 
 ///fav icon
-app.get('/favicon', function(req, res){});
+app.get('/favicon.ico', function(req, res){});
 
 //use jsonParser
 //app.use(jsonParser().json);
