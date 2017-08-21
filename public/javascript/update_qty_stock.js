@@ -1,6 +1,6 @@
 function update_qty_stock(url, qty, id) {
   $.ajax({
-        url: "http://localhost:3107/api/shoes/sold/" + id,
+        url: "https://shoes-catalogue-api.herokuapp.com/api/shoes/sold/" + id,
         data: {qty : qty},
         type: "POST",
         contentType: 'application/x-www-form-urlencoded'

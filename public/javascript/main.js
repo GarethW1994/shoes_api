@@ -1,6 +1,6 @@
 const log = console.log;
 //specify url
-const url = 'http://localhost:3107/api/shoes/';
+const url = "https://shoes-catalogue-api.herokuapp.com/";
 //display all the shoe information to the client
 var list = document.getElementById('shoeList');
 //initailising handlebars-v4
