@@ -57,7 +57,7 @@
   <script src="main.js" id="list" type="type/x-handlebars">
 {{#if shoes}}
     {{#each shoes}}
-  <div class="card mb-3">
+  <div class="card mb-3" id="shoe_card">
       <img class="card-img-top" src="{{image}}" width="80px" height="200px" alt="Card image cap">
       <div class="card-body">
           <h4 class="card-title">{{brand}}</h4>
@@ -66,7 +66,13 @@
             <li class="list-group-item">Size: {{size}}</li>
             <li class="list-group-item">Price: {{price}}</li>
           </ul>
+          {{#if sold_out}}
+          <div class="alert alert-danger" id="sold-out" role="alert">Sold Out</div>
+          {{else}}
+          <input type="text" id="unique_id" value="{{id}}"hidden>
           <p class="card-text"><small class="text-muted">We currently have {{in_stock}} shoes in stock of this item.</small></p>
+          <button type="button" class="btn btn-outline-success" id="purchase" tabindex="-1" data-toggle="modal" data-target="#purchaseModal" aria-hidden="true">Purchase</button>
+          {{/if}}
       </div>
   </div>
     {{/each}}
@@ -271,6 +277,62 @@
       </div>
   </div>
 
+  <!-- Update Modal -->
+  <div class="purchaseForm modal fade" id="purchaseModal" tabindex="-1" role="dialog" aria-labelledby="purchaseModalLabel" aria-hidden="true">
+    <script src="main.js" id="purchase_form" type="type/x-handlebars">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                  <h5 class="modal-title" id="updateModalLabel">Purchase Form:</h5>
+                  <button type="button" class="close" data-dismiss="modal" name="button" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <fieldset disabled>
+                      <div class="form-group">
+                        <label for="ID">ID:</label>
+                        <input type="text" id="disabledTextInput" class="form-control" name="id" value="{{id}}" placeholder="id">
+                      </div>
+                      <div class="form-group">
+                        <label for="Brand">Brand:</label>
+                        <input type="text" id="disabledTextInput" class="form-control" name="brand" value="{{brand}}" placeholder="id">
+                      </div>
+                      <div class="form-group">
+                        <label for="Color">Color:</label>
+                        <input type="text" id="disabledTextInput" class="form-control" name="color" value="{{color}}" placeholder="id">
+                      </div>
+                      <div class="form-group">
+                        <label for="Size">Size:</label>
+                        <input type="text" id="disabledTextInput" class="form-control" name="size" value="{{size}}" placeholder="id">
+                      </div>
+                      <div class="form-group">
+                        <label for="Price">Price:</label>
+                        <input type="text" id="disabledTextInput" class="form-control" name="price" value="{{price}}" placeholder="id">
+                      </div>
+                    </fieldset>
+                    <div class="form-group">
+                      <label for="Qty">Quantity:</label>
+                      <input type="text" class="form-control" name="no_stock" placeholder="enter quantity..." value="{{default}}">
+                    </div>
+                    <fieldset disabled>
+                    <div class="form-group">
+                      <label for="total">Total:</label>
+                      <input type="text" id="disabledTextInput" class="form-control" class="total" name="total" value="{{total}}" placeholder="R0.00">
+                    </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" name="button" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-success" name="process_purchase" id="process_purchase">Buy</button>
+            </div>
+        </div>
+      </div>
+        </script>
+  </div>
+
     <script src="./javascript/lib/popper.min.js" charset="utf-8"></script>
     <script src="./javascript/lib/bootstrap.js" charset="utf-8"></script>
 
@@ -284,6 +346,9 @@
     <script src="./javascript/update_stock.js" charset="utf-8"></script>
     <script src="./javascript/add_form_validations.js" charset="utf-8"></script>
     <script src="./javascript/add_shoe.js" charset="utf-8"></script>
+    <script src="./javascript/calculate_total.js" charset="utf-8"></script>
+    <script src="./javascript/populate_purchase_form.js" charset="utf-8"></script>
+    <script src="./javascript/update_qty_stock.js" charset="utf-8"></script>
     <script src="./javascript/main.js" charset="utf-8"></script>
     <script src="./javascript/events.js" charset="utf-8"></script>
 </body>

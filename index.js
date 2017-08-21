@@ -10,7 +10,7 @@ const portMsg = chalk.red.bgWhite;
 const log = console.log;
 
 //define mongo url
-const mongoURL = process.env.MONGO_DB_URL || "mongodb://localhost/shoesAPI";
+const mongoURL = process.env.MONGO_DB_URL || "mongodb://127.0.0.1/shoesAPI";
 
 //require model and routes
 const ShoeModel = require('./api/models/shoesModel');
@@ -69,11 +69,14 @@ app.get('/api/shoes/brand/:brandname/size/:size', shoesRoutes.sizeBrand);
 
 ///////////////////POST ROUTES///////////////////////
 
-//Update the stock levels when a shoe is sold
-app.post('/api/shoes/sold/:id', shoesRoutes.soldUpdate);
+//Update the stock levels
+app.post('/api/shoes/update/:id', shoesRoutes.update);
+
+//Update the stock levels
+app.post('/api/shoes/sold/:id', shoesRoutes.sold);
 
 //Add a new shoe route
-app.post('/api/shoes', shoesRoutes.addShoe);
+app.post('/api/shoes/', shoesRoutes.addShoe);
 
 //Not Found Error Handling
 app.use(function(req, res, next){

@@ -6,6 +6,9 @@ var list = document.getElementById('shoeList');
 //initailising handlebars-v4
 var listSource = document.getElementById('list').innerHTML;
 var shoeTemplate = Handlebars.compile(listSource);
+var modal_source = document.querySelector("#small_modal").innerHTML;
+var modal_template = Handlebars.compile(modal_source);
+var modal_error = document.querySelector('#notify_modal');
 
 var newShoeData = [];
 var new_stock = 0;
@@ -27,6 +30,12 @@ var render_data = function(prop) {
             let shoe_data = data.data.shoes;
             let sorted_data = shoe_data.sort(compareValues('brand'));
             newShoeData = shoe_data;
+
+            sorted_data.forEach(function(shoe){
+              if(shoe.in_stock === 0) {
+                shoe.sold_out = true;
+              };
+            })
             //Populate Shoes in list on html
             list.innerHTML = shoeTemplate({
               shoes: sorted_data

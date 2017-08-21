@@ -116,3 +116,51 @@ $('#textSearch').on('keyup', function(e){
       let shoe_price = $('#price').val("");
       let shoe_stock = $('#in_stock').val("");
   });
+
+var shoe_found = {};
+$("#shoeList").on('click', function(e) {
+      //let shoe = {};
+      if (e.target.id === 'purchase') {
+        let form = e.target.parentElement.children;
+        let unique_id = Number(form[2].value);
+        let shoe = newShoeData.find(function(data){
+            if (data.id === unique_id){
+              return data;
+            }
+        });
+        shoe_found = shoe;
+        log(shoe);
+        populate_purchase_form(shoe, 0);
+      };
+});
+
+$(".purchaseForm").on('click', function(e){
+  //  let buy_btn = this.children[0].children[0].lastElementChild[1];
+    let pos = e.target.name;
+    let qty = 1;
+    let form;
+    let price = 0;
+
+    if (pos === 'no_stock'){
+      form = e.target.parentElement.parentElement.children[0];
+      price = form.children[4].children[1].value;
+      e.target.addEventListener('change', function(e){
+        qty = Number(this.value);
+        if (!qty) {
+          log('Enter a number value and must be bigget than 0');
+        } else {
+          let total = calculate_total(price, qty);
+           populate_purchase_form(shoe_found, total, qty);
+        }
+      });
+  }
+
+  if (pos === 'process_purchase') {
+    form = e.target.parentElement.parentElement.children[1];
+    get_qty = form.children[0].children[1].children[1].value;
+
+    qty = Number(get_qty);
+    let shoe_id = Number(shoe_found.id);
+    update_qty_stock(url, qty, shoe_id);
+  }
+});

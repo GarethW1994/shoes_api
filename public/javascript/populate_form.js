@@ -5,7 +5,7 @@ var formHolder = document.querySelector('.updateForm');
 
 function populate_form(data, count, error) {
   let sorted_data = data.sort(compareValues('id'));
-  log(sorted_data.length + " " + count)
+
   if (count > sorted_data.length) {
      count = 0;
   }

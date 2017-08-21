@@ -37,7 +37,11 @@ module.exports = function(url) {
         size: {
             type: Number,
             default: 0
-           }
+          },
+        sold_out: {
+          type: Boolean,
+          default: false
+        }
     });
 
     ShoesSchema.index({id: 1}, {unique: true});
