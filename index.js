@@ -25,6 +25,9 @@ var shoesRoutes = ShoeRoutes(shoeModel);
 //create express app
 const app = express();
 
+//expose public folder
+app.use('/static', express.static('public'))
+
 //RESPONSE HEADERS
 //Grant access to the resources to web browers
 //specify what they can and can't do
