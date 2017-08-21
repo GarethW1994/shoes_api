@@ -1,7 +1,7 @@
 //Update stock
 function update_stock(url, new_stock, updated_id) {
   $.ajax({
-        url: "http://localhost:3107/api/shoes/update/" + updated_id,
+        url: url + "update/" + updated_id,
         data: {stock : new_stock},
         type: "POST",
         contentType: 'application/x-www-form-urlencoded'
