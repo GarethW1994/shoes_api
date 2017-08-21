@@ -49,6 +49,8 @@ app.get('/', function(req, res){
     res.redirect('/static');
 });
 
+///fav icon
+app.get('/favicon', function(req, res){});
 
 //use jsonParser
 //app.use(jsonParser().json);
