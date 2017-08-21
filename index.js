@@ -102,6 +102,10 @@ app.use(function(req, res, next){
 //create port
 var port = process.env.PORT || 3107;
 
+app.get('/get_url', function(req, res) {
+    res.json({url: mongoURL, port: port});
+});
+
 //port listen function
 app.listen(port, function() {
     log(success('Web App running on port: ' + portMsg(port)));
