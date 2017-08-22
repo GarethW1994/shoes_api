@@ -26,7 +26,7 @@ var shoesRoutes = ShoeRoutes(shoeModel);
 const app = express();
 
 //expose public folder
-app.use('/static', express.static('public'))
+app.use('/', express.static('public'))
 
 //RESPONSE HEADERS
 //Grant access to the resources to web browers
@@ -46,7 +46,8 @@ app.use(function(req, res, next){
 ///////////////////GET ROUTES///////////////////////
 //root
 app.get('/', function(req, res){
-    res.redirect('/static');
+    res.send('redirecting...');
+    res.redirect('/');
 });
 
 ///fav icon
