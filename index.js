@@ -10,7 +10,7 @@ const portMsg = chalk.red.bgWhite;
 const log = console.log;
 
 //define mongo url
-const mongoURL = process.env.MONGO_DB_URL || "mongodb://127.0.0.1/shoesAPI";
+const mongoURL = process.env.MONGO_DB_URL || "mongodb://localhost/shoesAPI";
 
 //require model and routes
 const ShoeModel = require('./api/models/shoesModel');
