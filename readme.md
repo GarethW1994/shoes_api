@@ -43,8 +43,11 @@ See <a href="https://github.com/GarethW1994/shoes_api/tree/about">About</a>
 
 ##### MongoDB
 1. Install <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-mongodb-on-ubuntu-16-04"> MongoDB</a> (Note that this is for ubuntu-16-04    distributions)
-- After mongodb is set up
-running the app will save all data in a database called `reg_numbers`.
+- After mongodb is set up go to your terminal and run `mongod` command. This will start-up and run the mongo server.
+- In a new terminal window or tab, run the following command `mongo`, this command will open MongoDB's shell. You should be seeing something like this:
+  ![mongo-screenshot](https://user-images.githubusercontent.com/22448019/29771337-85aec57a-8bf3-11e7-80be-2ceb18da26f8.png)
+
+- running the app will save all data in a database called `reg_numbers`.
 
 ---
 
