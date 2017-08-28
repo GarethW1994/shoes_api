@@ -5,16 +5,16 @@ const Model = require('../api/models/shoesModel');
 var Models = Model('mongodb://Ninja:$ninja!@ds117093.mlab.com:17093/shoes-api');
 
 describe('store shoes', function() {
-   //before it fuction run clear the Database
-    beforeEach(function(done) {
-        Models.Shoes.find({}, function(err) {
-            Models.Shoes.remove({}, function(err) {
-                done(err);
-            });
-        });
-    });
-
     it('should add new shoes to MongoDB', function(done) {
+      //before it fuction run clear the Database
+       beforeEach(function(done) {
+           Models.Shoes.find({}, function(err) {
+               Models.Shoes.remove({}, function(err) {
+                   done(err);
+               });
+           });
+       });
+
         var newShoe = {
             id: 200,
             color: 'Red',
