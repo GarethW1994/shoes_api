@@ -48,7 +48,30 @@ See <a href="https://github.com/GarethW1994/shoes_api/tree/about">About</a>
 
   ![mongo-screenshot](https://user-images.githubusercontent.com/22448019/29771337-85aec57a-8bf3-11e7-80be-2ceb18da26f8.png)
 
-- running the app will save all data in a database called `reg_numbers`.
+- Now we can view all our databases in mongo by using the command `show dbs`. We can now locate and see our shoesAPI database.
+
+- You can open that database by entering `use shoesAPI` command.
+
+- To view what the collections are in this database use `show collections` command.
+
+- You should now be seeing a collection called *shoes*. To find all the shoes within this collection use the following command:
+```
+db.shoes.find({});
+```
+
+- To remove all the shoes in this collection use this command command:
+
+```
+db.shoes.find({});
+```
+
+- To create a new sample shoe in this collection you would be using a `insert` command that will look something like this:
+```
+db.shoes.insert({  id: 100, color: 'Red', brand: 'Abi', price: 350, in_stock: 10, size: 3});
+```
+- You can now use the `db.shoes.find({})` command to view all the shoes. The shoe you just created should be displayed here now.
+  
+- Running the app will save all data in a database called `reg_numbers`.
 
 ---
 
