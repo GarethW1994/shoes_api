@@ -43,37 +43,39 @@ See <a href="https://github.com/GarethW1994/shoes_api/tree/about">About</a>
 
 ##### MongoDB
 1. Install <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-mongodb-on-ubuntu-16-04"> MongoDB</a> (Note that this is for ubuntu-16-04    distributions)
-- After mongodb is set up go to your terminal and run `mongod` command. This will start-up and run the mongo server.
-- In a new terminal window or tab, run the following command `mongo`, this command will open MongoDB's shell. You should be seeing something like this:
+
+2. After mongodb is set up go to your terminal and run `mongod` command. This will start-up and run the mongo server.
+
+3. In a new terminal window or tab, run the following command `mongo`, this command will open MongoDB's shell. You should be seeing something like this:
 
   ![mongo-screenshot](https://user-images.githubusercontent.com/22448019/29771337-85aec57a-8bf3-11e7-80be-2ceb18da26f8.png)
 
-- Now we can view all our databases in mongo by using the command `show dbs`. We can now locate and see our shoesAPI database.
+4. Now we can view all our databases in mongo by using the command `show dbs`. We can now locate and see our shoesAPI database.
 
   ![show-dbs](https://user-images.githubusercontent.com/22448019/29771899-58131884-8bf6-11e7-9399-231e7601fba7.png)
 
-- You can open that database by entering `use shoesAPI` command.
+5. You can open that database by entering `use shoesAPI` command.
 
-- To view what the collections that are in this database use `show collections` command.
+6. To view what the collections that are in this database use `show collections` command.
 
-- You should now be seeing a collection called *shoes*. To find all the shoes within this collection use the following command:
+7. You should now be seeing a collection called *shoes*. To find all the shoes within this collection use the following command:
 ```
 db.shoes.find({});
 ```
 
-- To remove all the shoes in this collection use this command command:
+8. To remove all the shoes in this collection use this command command:
 
 ```
 db.shoes.find({});
 ```
 
-- To create a new sample shoe in this collection you would be using a `insert` command that will look something like this:
+9. To create a new sample shoe in this collection you would be using a `insert` command that will look something like this:
 ```
 db.shoes.insert({  id: 100, color: 'Red', brand: 'Abi', price: 350, in_stock: 10, size: 3});
 ```
 - You can now use the `db.shoes.find({})` command to view all the shoes. The shoe you just created should be displayed here now.
 
-- Running the app will save all data in a database called `reg_numbers`.
+10. Running the app will save all data in a database called `reg_numbers`.
 
 ---
 
