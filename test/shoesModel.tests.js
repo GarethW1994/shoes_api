@@ -4,7 +4,7 @@ const Model = require('../api/models/shoesModel');
 
 describe('store shoes', function() {
     //connect to MongoDB
-    var Models = Model('mongodb://localhost/shoesAPI' || 'mongodb://Ninja:$ninja!@ds117093.mlab.com:17093/shoes-api');
+    var Models = Model('mongodb://Ninja:$ninja!@ds117093.mlab.com:17093/shoes-api');
 
    //before it fuction run clear the Database
     beforeEach(function(done) {
