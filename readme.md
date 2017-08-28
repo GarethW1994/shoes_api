@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/GarethW1994/shoes_api.svg?branch=master)](https://travis-ci.org/GarethW1994/shoes_api)
+
 See <a href="https://github.com/GarethW1994/shoes_api/tree/about">About</a>
 
 ## Getting Started:
