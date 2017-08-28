@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/GarethW1994/shoes_api.svg?branch=master)](https://travis-ci.org/GarethW1994/shoes_api)
 
-See <a href="https://github.com/GarethW1994/shoes_api/tree/about">About</a>
+See <a href="https://github.com/GarethW1994/shoes_api/tree/about">Usage</a>
 
 ## Getting Started:
 1. You can view this application <a href="https://shoes-catalogue-api.herokuapp.com/">here</a> or copy this link and paste it in your browser `https://shoes-catalogue-api.herokuapp.com/`.
