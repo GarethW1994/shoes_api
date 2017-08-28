@@ -148,3 +148,5 @@ node_js:
 1. Navigate to the `public` folder within the project.
 
 2. Open the `index.html` with chrome or your preferred web browser.
+
+3. See <a href="https://github.com/GarethW1994/shoes_api/tree/about">Usage</a> 
