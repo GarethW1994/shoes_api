@@ -1,7 +1,7 @@
-See <a href="https://github.com/GarethW1994/waiter_webapp/tree/about">About</a>
+See <a href="https://github.com/GarethW1994/shoes_api/tree/about">About</a>
 
 ## Getting Started:
-1. You can view this application <a href="http://waiter-webapp.herokuapp.com/">here</a> or copy this link and paste it in your browser `http://waiter-webapp.herokuapp.com/`.
+1. You can view this application <a href="https://shoes-catalogue-api.herokuapp.com/">here</a> or copy this link and paste it in your browser `https://shoes-catalogue-api.herokuapp.com/`.
 
 
 
@@ -75,7 +75,7 @@ npm install --save-dev nodemon
 
 3.  Now in your cloned repository you can run the `mocha` command to be able to run the tests.
 
-See: <a href="https://mochajs.org/">Mocha</a>
+### See: <a href="https://mochajs.org/">Mocha</a>
 ---
 #### Travis CL
 - Travis is a Continuous Integration service. Travis sets up “hooks” with GitHub to automatically run tests at specified times.
@@ -83,6 +83,8 @@ See: <a href="https://mochajs.org/">Mocha</a>
 1. Go to <a href="https://travis-ci.org/">travis-ci</a> to get started.
 
 2. Sign in with your github account by clicking on the button that says sign-in with github.
+
+![travis_sign_in_with_github](https://user-images.githubusercontent.com/22448019/29770416-451ce66c-8bef-11e7-8063-b39e6c43c7d8.png)
 
 3. Accept the authorization for this application. Github will need you to verify your password so go ahead and enter your password.
 
@@ -92,7 +94,7 @@ See: <a href="https://mochajs.org/">Mocha</a>
 
 6. Travis is now listening for changes on this repo. You can see each test by clicking on the shoes_api repo.
 
-### Still not clear enough? Please see here: <a href="https://docs.travis-ci.com/user/getting-started/">Travis Getting Started</a> 
+### Still not clear enough? Please see here: <a href="https://docs.travis-ci.com/user/getting-started/">Travis Getting Started</a>
 ---
 ##### Running Application
 1. To run the app in the cloned repository run the following command: `nodemon index.js`
