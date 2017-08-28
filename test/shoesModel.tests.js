@@ -32,32 +32,4 @@ describe('store shoes', function() {
                 });
             });
     });
-
-    it('should return the shoes from MongoDB when queried for a brand', function(done){
-      Models.Shoes.find({brand: 'Asics'}, function(err, shoes){
-          assert.equal(1, shoes.length);
-          done(err);
-      });
-    });
-
-    it('should return the shoes from MongoDB when queried for a size', function(done){
-      Models.Shoes.find({size: 3}, function(err, shoes){
-          assert.equal(1, shoes.length);
-          done(err);
-      });
-    });
-
-    it('should return the shoe from MongoDB when queried for a size and brand', function(done){
-      Models.Shoes.find({brand: 'Asics', size: 3}, function(err){
-          assert.equal(1, shoes.length);
-          done(err);
-      });
-    });
-
-    it('should update the stock of a shoe in MongoDB', function(done) {
-      Models.Shoes.update({id: 200}, {in_stock: 5}, function(err, shoes){
-          assert.equal(5, shoes.stock);
-          done(err);
-      });
-    })
 });
