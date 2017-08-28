@@ -20,7 +20,7 @@
         <a class="navbar-brand" href="#">Shoe Catalogue API</a>
         <div class="collapse navbar-collapse" id="navbar">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active"><a class="nav-link" href="https://shoes-catalogue-api.herokuapp.com/">Home <span class="sr-only">(current)</span></a></li>
+            <li class="nav-item active"><a class="nav-link" href="http://localhost:3107/api/shoes/">Home <span class="sr-only">(current)</span></a></li>
             <li class="nav-item"><a class="nav-link" href="https://github.com/GarethW1994/shoes_api">Github</a></li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
@@ -149,35 +149,35 @@
       </script>
 </div>
 
-<div class="modal fade bd-example-modal-sm" id="notify_modal" tabindex="-1" role="dialog" aria-labelledby="errorModal" aria-hidden="true">
-  <script src="main.js" id="small_modal" type="type/x-handlebars">
-  <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-      {{#if type_error}}
-      <div class="modal-header">
-            <h5 class="modal-title">{{title}}</h5>
-            <button type="button" class="close" data-dismiss="modal" name="button" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-      </div>
-      <div class="modal-body">
-        <p>{{type_error}}</p>
-          <div class="alert alert-danger" role="alert">{{message}}</div>
-      </div>
-      {{else}}
-      <div class="modal-header">
-            <h5 class="modal-title">{{title}}</h5>
-            <button type="button" class="close" data-dismiss="modal" name="button" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-      </div>
-      <div class="modal-body">
-          <div class="alert alert-success" role="alert">{{message}}</div>
-      </div>
-      {{/if}}
-      </div>
+  <div class="modal fade bd-example-modal-sm" id="notify_modal" tabindex="-1" role="dialog" aria-labelledby="errorModal" aria-hidden="true">
+    <script src="main.js" id="small_modal" type="type/x-handlebars">
+    <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+    {{#if type_error}}
+    <div class="modal-header">
+    <h5 class="modal-title">{{title}}</h5>
+    <button type="button" class="close" data-dismiss="modal" name="button" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
     </div>
-      </script>
+    <div class="modal-body">
+    <p>{{type_error}}</p>
+    <div class="alert alert-danger" role="alert">{{message}}</div>
+    </div>
+    {{else}}
+    <div class="modal-header">
+    <h5 class="modal-title">{{title}}</h5>
+    <button type="button" class="close" data-dismiss="modal" name="button" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div class="modal-body">
+    <div class="alert alert-success" role="alert">{{message}}</div>
+    </div>
+    {{/if}}
+    </div>
+    </div>
+    </script>
   </div>
 
   <script src="main.js" id="add_form" type="type/x-handlebars">
@@ -329,12 +329,20 @@
                 </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-danger" name="button" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-danger" name="button" data-dismiss="modal" id="purchase_close">Cancel</button>
               <button type="button" class="btn btn-success" name="process_purchase" id="process_purchase">Buy</button>
             </div>
         </div>
       </div>
         </script>
+
+        <div class="form-group" id="success_purchase">
+          <script src="main.js" id="success" type="type/x-handlebars">
+          {{#if error.id}}
+          <div class="alert alert-danger" role="alert">{{error.id}}</div>
+          {{/if}}
+          </script>
+        </div>
   </div>
 
     <script src="./javascript/lib/popper.min.js" charset="utf-8"></script>
