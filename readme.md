@@ -95,7 +95,7 @@ npm install --save-dev nodemon
 
 6. Travis is now listening for changes on this repo. You can see each test by clicking on the shoes_api repo.
 
-- Another thing to note is that you'll need a `.travis.yml` file in the project that contains the language you're using and the version,
+- Another thing to note is that you'll need a `.travis.yml` file in this project, if it's not there. This file contains the language you're using and the version,
 in this case it will look something like this:
 ```
 language: node_js
