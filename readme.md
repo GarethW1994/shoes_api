@@ -50,6 +50,8 @@ See <a href="https://github.com/GarethW1994/shoes_api/tree/about">About</a>
 
 - Now we can view all our databases in mongo by using the command `show dbs`. We can now locate and see our shoesAPI database.
 
+  ![show-dbs](https://user-images.githubusercontent.com/22448019/29771899-58131884-8bf6-11e7-9399-231e7601fba7.png)
+
 - You can open that database by entering `use shoesAPI` command.
 
 - To view what the collections are in this database use `show collections` command.
@@ -70,7 +72,7 @@ db.shoes.find({});
 db.shoes.insert({  id: 100, color: 'Red', brand: 'Abi', price: 350, in_stock: 10, size: 3});
 ```
 - You can now use the `db.shoes.find({})` command to view all the shoes. The shoe you just created should be displayed here now.
-  
+
 - Running the app will save all data in a database called `reg_numbers`.
 
 ---
