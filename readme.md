@@ -54,7 +54,7 @@ See <a href="https://github.com/GarethW1994/shoes_api/tree/about">About</a>
 
 - You can open that database by entering `use shoesAPI` command.
 
-- To view what the collections are in this database use `show collections` command.
+- To view what the collections that are in this database use `show collections` command.
 
 - You should now be seeing a collection called *shoes*. To find all the shoes within this collection use the following command:
 ```
