@@ -43,7 +43,8 @@ See <a href="https://github.com/GarethW1994/shoes_api/tree/about">About</a>
 
 ##### MongoDB
 1. Install <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-mongodb-on-ubuntu-16-04"> MongoDB</a> (Note that this is for ubuntu-16-04    distributions)
-- After mongodb is set up and running the app will save all data in a database called `reg_numbers`.
+- After mongodb is set up
+running the app will save all data in a database called `reg_numbers`.
 
 ---
 
@@ -94,6 +95,13 @@ npm install --save-dev nodemon
 
 6. Travis is now listening for changes on this repo. You can see each test by clicking on the shoes_api repo.
 
+- Another thing to note is that you'll need a `.travis.yml` file in the project that contains the language you're using and the version,
+in this case it will look something like this:
+```
+language: node_js
+node_js:
+  - 6.10.2
+```
 ### Still not clear enough? Please see here: <a href="https://docs.travis-ci.com/user/getting-started/">Travis Getting Started</a>
 ---
 ##### Running Application
