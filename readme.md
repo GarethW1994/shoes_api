@@ -92,7 +92,7 @@ See: <a href="https://mochajs.org/">Mocha</a>
 
 6. Travis is now listening for changes on this repo. You can see each test by clicking on the shoes_api repo.
 
-Still not clear enough? Please see here: <a href="https://docs.travis-ci.com/user/getting-started/">Travis Getting Started</a> 
+### Still not clear enough? Please see here: <a href="https://docs.travis-ci.com/user/getting-started/">Travis Getting Started</a> 
 ---
 ##### Running Application
 1. To run the app in the cloned repository run the following command: `nodemon index.js`
