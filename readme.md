@@ -28,7 +28,9 @@
   - Alternatively you can also search for a particular shoe by ID.
 
 ### Purchasing A Shoe:
-
+1. When viewing the shoes you should see a Purchase button at the bottom of each shoe card. Upon clicking on the purchase button a form should pop up where you need to fill in the following:
+  - Number Of Quantity.
+  
 <ul>
   <li>Requesting for all the shoe in the databse.</li>
   <li>Requesting for a certain shoe brand in the databse.</li>
