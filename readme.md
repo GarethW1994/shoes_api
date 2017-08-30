@@ -14,7 +14,5 @@ The API can be called that allows for operations such as:
   <li>Posting a new shoe to the databse.</li>
 </ul>
 
-
 #### Live Demo
-
-* A demo of this app can be found on heroku at: ![Shoe Catalogue]("https://shoes-catalogue-api.herokuapp.com/")
+* A demo of this app can be found on heroku at: <a href="https://shoes-catalogue-api.herokuapp.com/">Shoe Catalogue API</a>
