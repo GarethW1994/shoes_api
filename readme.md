@@ -20,15 +20,15 @@
 7. Shoe Stock - ***Note:*** This value has to be a non-decimal number.
 
 ### Updating The Stock:
-- Upon clicking on the Updating Stock Button. A form should pop up where you need to fill in the following:
+1. Upon clicking on the Updating Stock Button. A form should pop up where you need to fill in the following:
 
-1. Number of Stock.
+  - Number of Stock.
 
-- You can navigate to the particular shoe that you want by clicking on the next or previous buttons.
-- Alternatively you can also search for a particular shoe by ID.
+2. You can navigate to the particular shoe that you want by clicking on the next or previous buttons.
+  - Alternatively you can also search for a particular shoe by ID.
 
 ### Purchasing A Shoe:
- 
+
 <ul>
   <li>Requesting for all the shoe in the databse.</li>
   <li>Requesting for a certain shoe brand in the databse.</li>
