@@ -5,7 +5,14 @@
     * You can filter through the list of shoes by using the dropdown boxes. You can filter by size and by Brand Name:
     * You can use the search box in the menu to also search for particular shoes by Brand Name.
     * You can add a new shoe by clicking on the add shoe in the menu bar.
-      *  A form should pop up where you need to fill in the following:
+
+
+
+
+
+### Adding A New Shoe:
+
+1. Upon clicking on the Adding Shoe Button. A form should pop up where you need to fill in the following:
       1. Image Adress - ***Note:*** This can be obtained by copying any image address on the internet and pasting it in the textbox.
       2. Shoe ID - ***Note:*** This value has to a number value.
       3. Brand Name.
