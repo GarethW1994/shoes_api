@@ -12,7 +12,7 @@
 
 ### Adding A New Shoe:
 
-1. Upon clicking on the Adding Shoe Button. A form should pop up where you need to fill in the following:
+-     Upon clicking on the Adding Shoe Button. A form should pop up where you need to fill in the following:
       1. Image Adress - ***Note:*** This can be obtained by copying any image address on the internet and pasting it in the textbox.
       2. Shoe ID - ***Note:*** This value has to a number value.
       3. Brand Name.
