@@ -1,6 +1,7 @@
 //require assert
 const assert = require('assert');
 const Model = require('../api/models/shoesModel');
+
 //connect to MongoDB
 var Models = Model('mongodb://127.0.0.1/shoes-api');
 
