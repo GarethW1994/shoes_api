@@ -33,20 +33,35 @@
 ---
 # Routes: Developers
 - On the Front-end JQuery and Ajax is being used to make calls to the API.
+
+### GET ROUTES
 - To see all the shoes in the database the call will look like this:
 ```
-/api/shoes/
+/api/shoes
 ```
+- To see all the shoes for a particular brand:
+```
+/api/shoes/brand/:brandname
+```
+- To see all the shoes for a particular size:
+```
+/api/shoes/size/:size
 
-
-<ul>
-  <li>Requesting for all the shoe in the databse.</li>
-  <li>Requesting for a certain shoe brand in the databse.</li>
-  <li>Requesting for a certain shoe size in the databse.</li>
-  <li>Requesting for a certain shoe size and brand in the databse.</li>
-  <li>Updating stock for a certain shoe in the databse.</li>
-  <li>Posting a new shoe to the databse.</li>
-</ul>
-
+```
+---
+### POST ROUTES
+- To update the stock of a particular shoe:
+```
+/api/shoes/update/:id
+```
+- To purchase a particular shoe:
+```
+/api/shoes/sold/:id
+```
+- To see all the shoes for a given brand and size:
+```
+/api/shoes/brand/:brandname/size/:size
+```
+---
 #### Live Demo
 * A demo of this app can be found on heroku at: <a href="https://shoes-catalogue-api.herokuapp.com/">Shoe Catalogue API</a>
